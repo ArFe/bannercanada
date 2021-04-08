@@ -118,6 +118,12 @@ app.get('/', function(req, res){
   //res.sendFile(__dirname + '/index.html');
 });
 
+
+app.get('/qrcode', function(req, res){
+    res.sendFile(__dirname + '/public/qrcode/qrcodegen-input-demo.html');
+  });
+  
+  
 app.get('/status', function(req, res){
   res.sendFile(__dirname + '/status.html'); 
 });
