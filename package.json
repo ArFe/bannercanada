@@ -9,6 +9,7 @@
     "express-handlebars": "^3.0.0",
     "express-xml-bodyparser": "^0.3.0",
     "handlebars": "^4.0.12",
+    "needle": "^2.5.0",
     "socket.io": "^1.7.4",
     "xml2js": "^0.4.19",
     "xmldom": "^0.1.27"

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Objects - Registered to 'Sensonix ' - https://www.liquid-technologies.com/xml-objects -->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <file_info>
+    <info filename="DXMConfigQRCode.xml" guid="1994e05f-8811-43fe-960a-bfad15935d5f" software="DXMConfigurationSoftware v4" timestamp="2/25/2021 10:13:45 PM" version="4.10.10.0" os="Win32NT" osversion="Microsoft Windows NT 6.2.9200.0" device="DXM700" solution="None" />
+  </file_info>
+  <local_regs />
+  <cascade />
+  <constant />
+  <calculate />
+  <thresholds />
+  <trend />
+  <rtu_read />
+  <rtu_write />
+  <sched_holidays />
+  <sched_commands />
+  <sched_events />
+  <astro_clock>
+    <set dst="0" lat="0" lon="0" zone="0" />
+  </astro_clock>
+  <gps>
+    <unit addr="0" enabled="0" flags="0" lograte="00:00:00" poll="00:00:00" />
+  </gps>
+  <master_mode>
+    <mode opt="1" state="0" />
+  </master_mode>
+  <rtu_device>
+    <dev baud="19200" commtype="485" data="8" parity="0" stop="1" rate="50" thisUnit="0" timeout="5" />
+    <bus baud="19200" commtype="4" data="8" parity="0" stop="1" rate="50" thisUnit="255" timeout="5" />
+  </rtu_device>
+  <rtu_server>
+    <dev baud="19200" commtype="485" data="8" parity="0" stop="1" timeout="0" />
+  </rtu_server>
+  <scripts>
+    <script enabled="1" path="qrcode.sb" baud="19200" data="8" parity="0" stop="1" ipc="192.168.137.1" tcpc="1" portc="51236" />
+  </scripts>
+  <timekeepers>
+    <timekeeper name="external" interval="0" enabled="1" address="0.0.0.0" priority="3" />
+    <timekeeper name="internal" interval="0" enabled="0" address="0.0.0.0" priority="2" />
+    <timekeeper name="network" interval="0" enabled="0" address="0.0.0.0" priority="1" />
+  </timekeepers>
+  <system_types />
+  <log_files>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="EventLog.txt" new="0" rate="00:00:00" reg="0" tod="1" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile1.txt" new="0" rate="00:00:00" reg="0" tod="5" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile2.txt" new="0" rate="00:00:00" reg="0" tod="5" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile3.txt" new="0" rate="00:00:00" reg="0" tod="5" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="1" end="00:00:00" name="HttpLog.txt" new="0" rate="00:00:00" reg="0" tod="1" full="1" size="0" email="" subject="" />
+    </fileinfo>
+  </log_files>
+  <device_sync>
+    <device sync_rollover="100000000" />
+  </device_sync>
+  <email_server>
+    <server auth="" domain="" pop3="" pop3domain="" pop3user="" port="25" smtp="" sysrep="0" user="" pwd="" useauth="0" pass="" />
+  </email_server>
+  <email_recipient>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+  </email_recipient>
+  <sms>
+    <sms_recipient>
+      <recipient name="SMS Recipient 1" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 2" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 3" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 4" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 5" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 6" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 7" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 8" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 9" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 10" phone="" />
+      <message />
+    </sms_recipient>
+  </sms>
+  <server_params>
+    <server apn="IP" apnpass="vzwinternet" cellenab="8" cellfw="0.0.0.0" cellfwmask="255.255.255.0" defaddr="0.0.0.0" defgtwy="0.0.0.0" defmask="255.255.255.0" dhcp="1" sms="0" />
+    <cell_info cell_modelname="SXI-CATM1VZW-001" />
+    <maint csqbak="0" cexch="0" csqret="5" csrvwd="0" linkdel="60000" linkret="2" csflags="0" csrvre="0" ckeep="0" linkmax="120000" />
+    <eth flags="0" />
+    <apn idx="1" type="IPV4V6" name="" />
+    <apn idx="2" type="IPV4V6" name="vzwadmin" />
+    <apn idx="3" type="IPV4V6" name="vzwinternet" />
+    <apn idx="4" type="IPV4V6" name="vzwapp" />
+    <apn idx="5" type="IPV4V6" name="vzw800" />
+    <apn idx="6" type="IPV4V6" name="vzwclass6" />
+    <cx en="1" />
+  </server_params>
+  <http_push>
+    <dns address="0.0.0.0" />
+    <dns address="0.0.0.0" />
+    <push enabled="1" flags="4104" id="00000000-0000-0000-0000-000000000000" interval="00:00:00" port="80" debug="0" vendor="0" host="push.bannercds.com" page="/push.aspx" />
+  </http_push>
+  <fwall />
+  <profinet>
+    <io en="0" flags="0" />
+  </profinet>
+  <iot>
+    <mqtt en="0" flags="0" port="8883" vendor="3" debug="0" host="aws.com" ping="50000" throttle="5000" id="" />
+  </iot>
+</configuration>

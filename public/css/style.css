@@ -9,15 +9,30 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 #messages { margin-bottom: 40px }
 
 .dot {
-    height: 100px;
-    width: 100px;
-    background-color: #bbb;
+    height: 30vw;
+    width: 30vw;
+    background-color: green;
     border-radius: 50%;
     display: inline-block;
+    margin-top: 20vh;
+    margin-left: 35vw;
   }
+.text{
+    padding: 0.1em 0.1em;
+    font-size: 3.5em;
+    font-family: "Calibri Regular";
+    color: white;
+    display: flex;
+    margin-top: 2vh;
+    justify-content: center;
+}
 
-.red {
+ .red {
     background-color:red;
+ }
+
+ .yellow {
+    background-color:yellow;
  }
 
  #canvas {

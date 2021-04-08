@@ -1,0 +1,117 @@
+
+
+' Script constants
+CONST GWSID			= 1
+CONST LocalSID		= 199
+CONST IOBoardSID	= 200
+CONST Display       = 201
+'
+CONST GW_IO15		= 15
+CONST GW_IO16		= 16
+CONST GW_IO7		= 7
+CONST GW_IO8		= 8
+'
+CONST GREEN_ADR		= 1
+CONST YELLOW_ADR	= 2
+CONST RED_ADR		= 3
+CONST MISSED_ADR	= 4
+CONST RUN_ADR		= 5
+CONST NODE_ADR		= 6
+CONST RUNNING_ADR	= 7
+
+CONST TIME_ADR		= 851
+CONST MGAGE_TH		= 1000
+CONST REFRESH_TIME  = 300 'in seconds
+
+green 	= 0
+yellow 	= 0
+red 	= 0
+missed 	= 0
+run 	= 0
+node 	= 0
+lastNode= 0
+running	= 0
+
+siteSurveyCmd 	= 0
+RdData1			= 0
+RdData2			= 0
+RdData 			= 0 
+ErrCnt			= 0
+startTime 		= TICKS
+
+' Read Data
+FUNCTION readData
+    ' Read from GW
+	run		= GETREG(RUN_ADR, LocalSID, 0)
+	node	= GETREG(NODE_ADR, LocalSID, 0)    
+End Function
+
+'Write Data
+FUNCTION writeData
+   'Write to local registers
+
+	WrErr = MBREGOUT (0, green)
+	WrErr = MBREGOUT (1, yellow)
+	WrErr = MBREGOUT (2, red)
+	WrErr = MBREGOUT (3, missed)
+	WrErr = MULTISET (GREEN_ADR, 4, LocalSID, 0)
+	WrErr	= SETREG(RUNNING_ADR, running, LocalSID, 0)
+
+	if running = 1 and (TICKS - startTime) > 500 then 
+		startTime = TICKS
+		PushNow = API(6)
+		PRINT "PushNow ", PushNow, "\n\r"
+	end if	
+
+end FUNCTION
+
+FUNCTION enableSS
+
+	if run = 1 then 
+		siteSurveyCmd = 32 * 256 + node
+		running = 1
+	else 
+		siteSurveyCmd = 32 * 256 + 0	
+		running = 0
+	end if
+
+	WrErr	= SETREG(GW_IO15, siteSurveyCmd, GWSID, 0)
+
+	'PRINT "Running = ", running, "\n\r"
+
+end FUNCTION
+
+FUNCTION siteSurvey
+
+	if run <> running OR lastNode <> node then 
+		enableSS
+	end if
+
+	lastNode = node
+	
+	if running then
+		RdData1	= GETREG(GW_IO7, GWSID, 0)
+		RdData2	= GETREG(GW_IO8, GWSID, 0)
+
+		green = RdData2 \ 256
+		yellow = RdData2 AND 255
+		red = RdData1 \ 256
+		missed = RdData1 AND 255
+
+		'PRINT "green = ", green, "\n\r"
+		'PRINT "yellow = ", yellow, "\n\r"
+		'PRINT "red = ", red, "\n\r"
+		'PRINT "missed = ", missed, "\n\r"
+	end if				 
+	
+
+end FUNCTION
+
+' Main loop
+WHILE(1)
+   '
+    readData
+    siteSurvey
+    writeData
+
+WEND

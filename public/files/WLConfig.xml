@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Objects - Registered to 'Sensonix ' - https://www.liquid-technologies.com/xml-objects -->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <file_info>
+    <info filename="WLConfig.xml" guid="71e5b9c6-4753-4d80-b7fd-c56b94da740c" software="DXMConfigurationSoftware v4" timestamp="2/3/2021 5:46:07 PM" version="4.10.4.0" os="Win32NT" osversion="Microsoft Windows NT 6.2.9200.0" device="DXM700" solution="None" />
+    <notes>XML CALLForDSTS V4
+This is a configuration for call for parts using a DXM700 with up to 40 K70 touch 
+with 3 colors (K70DXN9T2GRYQ) and up to 7 DX80N9DSTS (DSTS). This configuration enables the 
+DXM and the above devices to work as a call for parts application, where a touch on the button 
+(usually station) will start a call on the DSTS displays (usually forklifts or supervisors).
+Please check the callForDSTS.pdf document for detailed info.
+
+This XML requires the Call For parts DSTS Script file (callForDSTS_V4.sb) and is only to be used on the DXM700 or newer devices.
+
+Copyright 2020 Banner Engineering Corp
+All rights reserved.</notes>
+  </file_info>
+  <local_regs>
+    <reg cloudio="1" logfiles="8" num="801" perms="1" name="Total Station Calls Made" />
+    <reg cloudio="1" logfiles="8" num="802" perms="1" name="Total Station Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="803" perms="1" name="Stations Avg Wait Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="804" perms="1" name="Total Stations Waiting" />
+    <reg cloudio="1" logfiles="8" num="805" perms="1" name="Total Stations In delivery" />
+    <reg cloudio="1" logfiles="8" num="806" perms="1" name="Total Forklift Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="807" perms="1" name="Total Forklift Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="808" perms="1" name="Forklifts Avg time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="809" perms="1" name="Forklifts Avg time to Serve" units="min" />
+    <reg cloudio="1" logfiles="8" num="810" perms="1" name="Stations Ok" />
+    <reg cloudio="1" logfiles="8" num="811" perms="1" name="Stations Warning" />
+    <reg cloudio="1" logfiles="8" num="812" perms="1" name="Stations Alarm" />
+    <reg cloudio="1" logfiles="8" num="813" perms="1" name="Queue Alarm State" />
+    <reg cloudio="1" logfiles="72" num="821" perms="3" name="Reset Station Stats" lcd="3" units="on/off" />
+    <reg cloudio="1" logfiles="72" num="822" perms="3" name="Reset FL Stats" lcd="3" units="on/off" />
+    <reg cloudio="1" logfiles="8" num="851" perms="3" name="Queue Alarm" lcd="3" units="stns" />
+    <reg num="852" name="FL Confirm Enable" lcd="3" units="on/off" />
+    <reg num="853" name="DSTS Backlight Timeout" lcd="3" units="sec" />
+    <reg num="854" name="DSTS Green LED Timeout" lcd="3" units="sec" />
+    <reg num="855" name="K70 Green ON" lcd="3" units="on/off" />
+    <reg num="856" name="K70 Yellow ACK" lcd="3" units="on/off" />
+    <reg num="857" name="Display Timeout" lcd="3" units="min" />
+    <reg num="858" name="Delay Mode" lcd="3" units="on/off" />
+    <reg cloudio="1" logfiles="8" num="859" perms="3" name="Warning time" lcd="3" units="min" />
+    <reg cloudio="1" logfiles="8" num="860" perms="3" name="Alarm time" lcd="3" units="min" />
+    <reg num="861" name="Number of Stations" lcd="3" />
+    <reg num="862" name="Number of Alarm TL" lcd="3" />
+    <reg num="899" name="First time" />
+    <reg num="5001" name="Station 01 Status" />
+    <reg num="5002" name="Station 02 Status" />
+    <reg num="5003" name="Station 03 Status" />
+    <reg num="5004" name="Station 04 Status" />
+    <reg num="5005" name="Station 05 Status" />
+    <reg num="5006" name="Station 06 Status" />
+    <reg num="5007" name="Station 07 Status" />
+    <reg num="5008" name="Station 08 Status" />
+    <reg num="5009" name="Station 09 Status" />
+    <reg num="5010" name="Station 10 Status" />
+    <reg num="5011" name="Station 11 Status" />
+    <reg num="5012" name="Station 12 Status" />
+    <reg num="5013" name="Station 13 Status" />
+    <reg num="5014" name="Station 14 Status" />
+    <reg num="5015" name="Station 15 Status" />
+    <reg num="5016" name="Station 16 Status" />
+    <reg num="5017" name="Station 17 Status" />
+    <reg num="5018" name="Station 18 Status" />
+    <reg num="5019" name="Station 19 Status" />
+    <reg num="5020" name="Station 20 Status" />
+    <reg num="5021" name="Station 21 Status" />
+    <reg num="5022" name="Station 22 Status" />
+    <reg num="5023" name="Station 23 Status" />
+    <reg num="5024" name="Station 24 Status" />
+    <reg num="5025" name="Station 25 Status" />
+    <reg num="5026" name="Station 26 Status" />
+    <reg num="5027" name="Station 27 Status" />
+    <reg num="5028" name="Station 28 Status" />
+    <reg num="5029" name="Station 29 Status" />
+    <reg num="5030" name="Station 30 Status" />
+    <reg num="5031" name="Station 31 Status" />
+    <reg num="5032" name="Station 32 Status" />
+    <reg num="5033" name="Station 33 Status" />
+    <reg num="5034" name="Station 34 Status" />
+    <reg num="5035" name="Station 35 Status" />
+    <reg num="5036" name="Station 36 Status" />
+    <reg num="5037" name="Station 37 Status" />
+    <reg num="5038" name="Station 38 Status" />
+    <reg num="5039" name="Station 39 Status" />
+    <reg num="5040" name="Station 40 Status" />
+    <reg num="5041" name="Station 41 Status" />
+    <reg num="5042" name="Station 42 Status" />
+    <reg num="5043" name="Station 43 Status" />
+    <reg num="5044" name="Station 44 Status" />
+    <reg num="5045" name="Station 45 Status" />
+    <reg num="5046" name="Station 46 Status" />
+    <reg num="5051" name="Station 01 ON Time" units="min" />
+    <reg num="5052" name="Station 02 ON Time" units="min" />
+    <reg num="5053" name="Station 03 ON Time" units="min" />
+    <reg num="5054" name="Station 04 ON Time" units="min" />
+    <reg num="5055" name="Station 05 ON Time" units="min" />
+    <reg num="5056" name="Station 06 ON Time" units="min" />
+    <reg num="5057" name="Station 07 ON Time" units="min" />
+    <reg num="5058" name="Station 08 ON Time" units="min" />
+    <reg num="5059" name="Station 09 ON Time" units="min" />
+    <reg num="5060" name="Station 10 ON Time" units="min" />
+    <reg num="5061" name="Station 11 ON Time" units="min" />
+    <reg num="5062" name="Station 12 ON Time" units="min" />
+    <reg num="5063" name="Station 13 ON Time" units="min" />
+    <reg num="5064" name="Station 14 ON Time" units="min" />
+    <reg num="5065" name="Station 15 ON Time" units="min" />
+    <reg num="5066" name="Station 16 ON Time" units="min" />
+    <reg num="5067" name="Station 17 ON Time" units="min" />
+    <reg num="5068" name="Station 18 ON Time" units="min" />
+    <reg num="5069" name="Station 19 ON Time" units="min" />
+    <reg num="5070" name="Station 20 ON Time" units="min" />
+    <reg num="5071" name="Station 21 ON Time" units="min" />
+    <reg num="5072" name="Station 22 ON Time" units="min" />
+    <reg num="5073" name="Station 23 ON Time" units="min" />
+    <reg num="5074" name="Station 24 ON Time" units="min" />
+    <reg num="5075" name="Station 25 ON Time" units="min" />
+    <reg num="5076" name="Station 26 ON Time" units="min" />
+    <reg num="5077" name="Station 27 ON Time" units="min" />
+    <reg num="5078" name="Station 28 ON Time" units="min" />
+    <reg num="5079" name="Station 29 ON Time" units="min" />
+    <reg num="5080" name="Station 30 ON Time" units="min" />
+    <reg num="5081" name="Station 31 ON Time" units="min" />
+    <reg num="5082" name="Station 32 ON Time" units="min" />
+    <reg num="5083" name="Station 33 ON Time" units="min" />
+    <reg num="5084" name="Station 34 ON Time" units="min" />
+    <reg num="5085" name="Station 35 ON Time" units="min" />
+    <reg num="5086" name="Station 36 ON Time" units="min" />
+    <reg num="5087" name="Station 37 ON Time" units="min" />
+    <reg num="5088" name="Station 38 ON Time" units="min" />
+    <reg num="5089" name="Station 39 ON Time" units="min" />
+    <reg num="5090" name="Station 40 ON Time" units="min" />
+    <reg num="5091" name="Station 41 ON Time" units="min" />
+    <reg num="5092" name="Station 42 ON Time" units="min" />
+    <reg num="5093" name="Station 43 ON Time" units="min" />
+    <reg num="5094" name="Station 44 ON Time" units="min" />
+    <reg num="5095" name="Station 45 ON Time" units="min" />
+    <reg num="5096" name="Station 46 ON Time" units="min" />
+    <reg num="5101" name="Station 01 OFF Time" units="min" />
+    <reg num="5102" name="Station 02 OFF Time" units="min" />
+    <reg num="5103" name="Station 03 OFF Time" units="min" />
+    <reg num="5104" name="Station 04 OFF Time" units="min" />
+    <reg num="5105" name="Station 05 OFF Time" units="min" />
+    <reg num="5106" name="Station 06 OFF Time" units="min" />
+    <reg num="5107" name="Station 07 OFF Time" units="min" />
+    <reg num="5108" name="Station 08 OFF Time" units="min" />
+    <reg num="5109" name="Station 09 OFF Time" units="min" />
+    <reg num="5110" name="Station 10 OFF Time" units="min" />
+    <reg num="5111" name="Station 11 OFF Time" units="min" />
+    <reg num="5112" name="Station 12 OFF Time" units="min" />
+    <reg num="5113" name="Station 13 OFF Time" units="min" />
+    <reg num="5114" name="Station 14 OFF Time" units="min" />
+    <reg num="5115" name="Station 15 OFF Time" units="min" />
+    <reg num="5116" name="Station 16 OFF Time" units="min" />
+    <reg num="5117" name="Station 17 OFF Time" units="min" />
+    <reg num="5118" name="Station 18 OFF Time" units="min" />
+    <reg num="5119" name="Station 19 OFF Time" units="min" />
+    <reg num="5120" name="Station 20 OFF Time" units="min" />
+    <reg num="5121" name="Station 21 OFF Time" units="min" />
+    <reg num="5122" name="Station 22 OFF Time" units="min" />
+    <reg num="5123" name="Station 23 OFF Time" units="min" />
+    <reg num="5124" name="Station 24 OFF Time" units="min" />
+    <reg num="5125" name="Station 25 OFF Time" units="min" />
+    <reg num="5126" name="Station 26 OFF Time" units="min" />
+    <reg num="5127" name="Station 27 OFF Time" units="min" />
+    <reg num="5128" name="Station 28 OFF Time" units="min" />
+    <reg num="5129" name="Station 29 OFF Time" units="min" />
+    <reg num="5130" name="Station 30 OFF Time" units="min" />
+    <reg num="5131" name="Station 31 OFF Time" units="min" />
+    <reg num="5132" name="Station 32 OFF Time" units="min" />
+    <reg num="5133" name="Station 33 OFF Time" units="min" />
+    <reg num="5134" name="Station 34 OFF Time" units="min" />
+    <reg num="5135" name="Station 35 OFF Time" units="min" />
+    <reg num="5136" name="Station 36 OFF Time" units="min" />
+    <reg num="5137" name="Station 37 OFF Time" units="min" />
+    <reg num="5138" name="Station 38 OFF Time" units="min" />
+    <reg num="5139" name="Station 39 OFF Time" units="min" />
+    <reg num="5140" name="Station 40 OFF Time" units="min" />
+    <reg num="5141" name="Station 41 OFF Time" units="min" />
+    <reg num="5142" name="Station 42 OFF Time" units="min" />
+    <reg num="5143" name="Station 43 OFF Time" units="min" />
+    <reg num="5144" name="Station 44 OFF Time" units="min" />
+    <reg num="5145" name="Station 45 OFF Time" units="min" />
+    <reg num="5146" name="Station 46 OFF Time" units="min" />
+    <reg num="5151" name="Station 01 Average Serve Time" units="min" />
+    <reg num="5152" name="Station 02 Average Serve Time" units="min" />
+    <reg num="5153" name="Station 03 Average Serve Time" units="min" />
+    <reg num="5154" name="Station 04 Average Serve Time" units="min" />
+    <reg num="5155" name="Station 05 Average Serve Time" units="min" />
+    <reg num="5156" name="Station 06 Average Serve Time" units="min" />
+    <reg num="5157" name="Station 07 Average Serve Time" units="min" />
+    <reg num="5158" name="Station 08 Average Serve Time" units="min" />
+    <reg num="5159" name="Station 09 Average Serve Time" units="min" />
+    <reg num="5160" name="Station 10 Average Serve Time" units="min" />
+    <reg num="5161" name="Station 11 Average Serve Time" units="min" />
+    <reg num="5162" name="Station 12 Average Serve Time" units="min" />
+    <reg num="5163" name="Station 13 Average Serve Time" units="min" />
+    <reg num="5164" name="Station 14 Average Serve Time" units="min" />
+    <reg num="5165" name="Station 15 Average Serve Time" units="min" />
+    <reg num="5166" name="Station 16 Average Serve Time" units="min" />
+    <reg num="5167" name="Station 17 Average Serve Time" units="min" />
+    <reg num="5168" name="Station 18 Average Serve Time" units="min" />
+    <reg num="5169" name="Station 19 Average Serve Time" units="min" />
+    <reg num="5170" name="Station 20 Average Serve Time" units="min" />
+    <reg num="5171" name="Station 21 Average Serve Time" units="min" />
+    <reg num="5172" name="Station 22 Average Serve Time" units="min" />
+    <reg num="5173" name="Station 23 Average Serve Time" units="min" />
+    <reg num="5174" name="Station 24 Average Serve Time" units="min" />
+    <reg num="5175" name="Station 25 Average Serve Time" units="min" />
+    <reg num="5176" name="Station 26 Average Serve Time" units="min" />
+    <reg num="5177" name="Station 27 Average Serve Time" units="min" />
+    <reg num="5178" name="Station 28 Average Serve Time" units="min" />
+    <reg num="5179" name="Station 29 Average Serve Time" units="min" />
+    <reg num="5180" name="Station 30 Average Serve Time" units="min" />
+    <reg num="5181" name="Station 31 Average Serve Time" units="min" />
+    <reg num="5182" name="Station 32 Average Serve Time" units="min" />
+    <reg num="5183" name="Station 33 Average Serve Time" units="min" />
+    <reg num="5184" name="Station 34 Average Serve Time" units="min" />
+    <reg num="5185" name="Station 35 Average Serve Time" units="min" />
+    <reg num="5186" name="Station 36 Average Serve Time" units="min" />
+    <reg num="5187" name="Station 37 Average Serve Time" units="min" />
+    <reg num="5188" name="Station 38 Average Serve Time" units="min" />
+    <reg num="5189" name="Station 39 Average Serve Time" units="min" />
+    <reg num="5190" name="Station 40 Average Serve Time" units="min" />
+    <reg num="5191" name="Station 41 Average Serve Time" units="min" />
+    <reg num="5192" name="Station 42 Average Serve Time" units="min" />
+    <reg num="5193" name="Station 43 Average Serve Time" units="min" />
+    <reg num="5194" name="Station 44 Average Serve Time" units="min" />
+    <reg num="5195" name="Station 45 Average Serve Time" units="min" />
+    <reg num="5196" name="Station 46 Average Serve Time" units="min" />
+    <reg num="5201" name="Station 01 Average Wait Time" units="min" />
+    <reg num="5202" name="Station 02 Average Wait Time" units="min" />
+    <reg num="5203" name="Station 03 Average Wait Time" units="min" />
+    <reg num="5204" name="Station 04 Average Wait Time" units="min" />
+    <reg num="5205" name="Station 05 Average Wait Time" units="min" />
+    <reg num="5206" name="Station 06 Average Wait Time" units="min" />
+    <reg num="5207" name="Station 07 Average Wait Time" units="min" />
+    <reg num="5208" name="Station 08 Average Wait Time" units="min" />
+    <reg num="5209" name="Station 09 Average Wait Time" units="min" />
+    <reg num="5210" name="Station 10 Average Wait Time" units="min" />
+    <reg num="5211" name="Station 11 Average Wait Time" units="min" />
+    <reg num="5212" name="Station 12 Average Wait Time" units="min" />
+    <reg num="5213" name="Station 13 Average Wait Time" units="min" />
+    <reg num="5214" name="Station 14 Average Wait Time" units="min" />
+    <reg num="5215" name="Station 15 Average Wait Time" units="min" />
+    <reg num="5216" name="Station 16 Average Wait Time" units="min" />
+    <reg num="5217" name="Station 17 Average Wait Time" units="min" />
+    <reg num="5218" name="Station 18 Average Wait Time" units="min" />
+    <reg num="5219" name="Station 19 Average Wait Time" units="min" />
+    <reg num="5220" name="Station 20 Average Wait Time" units="min" />
+    <reg num="5221" name="Station 21 Average Wait Time" units="min" />
+    <reg num="5222" name="Station 22 Average Wait Time" units="min" />
+    <reg num="5223" name="Station 23 Average Wait Time" units="min" />
+    <reg num="5224" name="Station 24 Average Wait Time" units="min" />
+    <reg num="5225" name="Station 25 Average Wait Time" units="min" />
+    <reg num="5226" name="Station 26 Average Wait Time" units="min" />
+    <reg num="5227" name="Station 27 Average Wait Time" units="min" />
+    <reg num="5228" name="Station 28 Average Wait Time" units="min" />
+    <reg num="5229" name="Station 29 Average Wait Time" units="min" />
+    <reg num="5230" name="Station 30 Average Wait Time" units="min" />
+    <reg num="5231" name="Station 31 Average Wait Time" units="min" />
+    <reg num="5232" name="Station 32 Average Wait Time" units="min" />
+    <reg num="5233" name="Station 33 Average Wait Time" units="min" />
+    <reg num="5234" name="Station 34 Average Wait Time" units="min" />
+    <reg num="5235" name="Station 35 Average Wait Time" units="min" />
+    <reg num="5236" name="Station 36 Average Wait Time" units="min" />
+    <reg num="5237" name="Station 37 Average Wait Time" units="min" />
+    <reg num="5238" name="Station 38 Average Wait Time" units="min" />
+    <reg num="5239" name="Station 39 Average Wait Time" units="min" />
+    <reg num="5240" name="Station 40 Average Wait Time" units="min" />
+    <reg num="5241" name="Station 41 Average Wait Time" units="min" />
+    <reg num="5242" name="Station 42 Average Wait Time" units="min" />
+    <reg num="5243" name="Station 43 Average Wait Time" units="min" />
+    <reg num="5244" name="Station 44 Average Wait Time" units="min" />
+    <reg num="5245" name="Station 45 Average Wait Time" units="min" />
+    <reg num="5246" name="Station 46 Average Wait Time" units="min" />
+    <reg num="5251" name="Station 01 Calls Cancelled" />
+    <reg num="5252" name="Station 02 Calls Cancelled" />
+    <reg num="5253" name="Station 03 Calls Cancelled" />
+    <reg num="5254" name="Station 04 Calls Cancelled" />
+    <reg num="5255" name="Station 05 Calls Cancelled" />
+    <reg num="5256" name="Station 06 Calls Cancelled" />
+    <reg num="5257" name="Station 07 Calls Cancelled" />
+    <reg num="5258" name="Station 08 Calls Cancelled" />
+    <reg num="5259" name="Station 09 Calls Cancelled" />
+    <reg num="5260" name="Station 10 Calls Cancelled" />
+    <reg num="5261" name="Station 11 Calls Cancelled" />
+    <reg num="5262" name="Station 12 Calls Cancelled" />
+    <reg num="5263" name="Station 13 Calls Cancelled" />
+    <reg num="5264" name="Station 14 Calls Cancelled" />
+    <reg num="5265" name="Station 15 Calls Cancelled" />
+    <reg num="5266" name="Station 16 Calls Cancelled" />
+    <reg num="5267" name="Station 17 Calls Cancelled" />
+    <reg num="5268" name="Station 18 Calls Cancelled" />
+    <reg num="5269" name="Station 19 Calls Cancelled" />
+    <reg num="5270" name="Station 20 Calls Cancelled" />
+    <reg num="5271" name="Station 21 Calls Cancelled" />
+    <reg num="5272" name="Station 22 Calls Cancelled" />
+    <reg num="5273" name="Station 23 Calls Cancelled" />
+    <reg num="5274" name="Station 24 Calls Cancelled" />
+    <reg num="5275" name="Station 25 Calls Cancelled" />
+    <reg num="5276" name="Station 26 Calls Cancelled" />
+    <reg num="5277" name="Station 27 Calls Cancelled" />
+    <reg num="5278" name="Station 28 Calls Cancelled" />
+    <reg num="5279" name="Station 29 Calls Cancelled" />
+    <reg num="5280" name="Station 30 Calls Cancelled" />
+    <reg num="5281" name="Station 31 Calls Cancelled" />
+    <reg num="5282" name="Station 32 Calls Cancelled" />
+    <reg num="5283" name="Station 33 Calls Cancelled" />
+    <reg num="5284" name="Station 34 Calls Cancelled" />
+    <reg num="5285" name="Station 35 Calls Cancelled" />
+    <reg num="5286" name="Station 36 Calls Cancelled" />
+    <reg num="5287" name="Station 37 Calls Cancelled" />
+    <reg num="5288" name="Station 38 Calls Cancelled" />
+    <reg num="5289" name="Station 39 Calls Cancelled" />
+    <reg num="5290" name="Station 40 Calls Cancelled" />
+    <reg num="5291" name="Station 41 Calls Cancelled" />
+    <reg num="5292" name="Station 42 Calls Cancelled" />
+    <reg num="5293" name="Station 43 Calls Cancelled" />
+    <reg num="5294" name="Station 44 Calls Cancelled" />
+    <reg num="5295" name="Station 45 Calls Cancelled" />
+    <reg num="5296" name="Station 46 Calls Cancelled" />
+    <reg num="5301" name="Station 01 Calls Made" />
+    <reg num="5302" name="Station 02 Calls Made" />
+    <reg num="5303" name="Station 03 Calls Made" />
+    <reg num="5304" name="Station 04 Calls Made" />
+    <reg num="5305" name="Station 05 Calls Made" />
+    <reg num="5306" name="Station 06 Calls Made" />
+    <reg num="5307" name="Station 07 Calls Made" />
+    <reg num="5308" name="Station 08 Calls Made" />
+    <reg num="5309" name="Station 09 Calls Made" />
+    <reg num="5310" name="Station 10 Calls Made" />
+    <reg num="5311" name="Station 11 Calls Made" />
+    <reg num="5312" name="Station 12 Calls Made" />
+    <reg num="5313" name="Station 13 Calls Made" />
+    <reg num="5314" name="Station 14 Calls Made" />
+    <reg num="5315" name="Station 15 Calls Made" />
+    <reg num="5316" name="Station 16 Calls Made" />
+    <reg num="5317" name="Station 17 Calls Made" />
+    <reg num="5318" name="Station 18 Calls Made" />
+    <reg num="5319" name="Station 19 Calls Made" />
+    <reg num="5320" name="Station 20 Calls Made" />
+    <reg num="5321" name="Station 21 Calls Made" />
+    <reg num="5322" name="Station 22 Calls Made" />
+    <reg num="5323" name="Station 23 Calls Made" />
+    <reg num="5324" name="Station 24 Calls Made" />
+    <reg num="5325" name="Station 25 Calls Made" />
+    <reg num="5326" name="Station 26 Calls Made" />
+    <reg num="5327" name="Station 27 Calls Made" />
+    <reg num="5328" name="Station 28 Calls Made" />
+    <reg num="5329" name="Station 29 Calls Made" />
+    <reg num="5330" name="Station 30 Calls Made" />
+    <reg num="5331" name="Station 31 Calls Made" />
+    <reg num="5332" name="Station 32 Calls Made" />
+    <reg num="5333" name="Station 33 Calls Made" />
+    <reg num="5334" name="Station 34 Calls Made" />
+    <reg num="5335" name="Station 35 Calls Made" />
+    <reg num="5336" name="Station 36 Calls Made" />
+    <reg num="5337" name="Station 37 Calls Made" />
+    <reg num="5338" name="Station 38 Calls Made" />
+    <reg num="5339" name="Station 39 Calls Made" />
+    <reg num="5340" name="Station 40 Calls Made" />
+    <reg num="5341" name="Station 41 Calls Made" />
+    <reg num="5342" name="Station 42 Calls Made" />
+    <reg num="5343" name="Station 43 Calls Made" />
+    <reg num="5344" name="Station 44 Calls Made" />
+    <reg num="5345" name="Station 45 Calls Made" />
+    <reg num="5346" name="Station 46 Calls Made" />
+    <reg num="5351" name="Station 01 Alarm Status" />
+    <reg num="5352" name="Station 02 Alarm Status" />
+    <reg num="5353" name="Station 03 Alarm Status" />
+    <reg num="5354" name="Station 04 Alarm Status" />
+    <reg num="5355" name="Station 05 Alarm Status" />
+    <reg num="5356" name="Station 06 Alarm Status" />
+    <reg num="5357" name="Station 07 Alarm Status" />
+    <reg num="5358" name="Station 08 Alarm Status" />
+    <reg num="5359" name="Station 09 Alarm Status" />
+    <reg num="5360" name="Station 10 Alarm Status" />
+    <reg num="5361" name="Station 11 Alarm Status" />
+    <reg num="5362" name="Station 12 Alarm Status" />
+    <reg num="5363" name="Station 13 Alarm Status" />
+    <reg num="5364" name="Station 14 Alarm Status" />
+    <reg num="5365" name="Station 15 Alarm Status" />
+    <reg num="5366" name="Station 16 Alarm Status" />
+    <reg num="5367" name="Station 17 Alarm Status" />
+    <reg num="5368" name="Station 18 Alarm Status" />
+    <reg num="5369" name="Station 19 Alarm Status" />
+    <reg num="5370" name="Station 20 Alarm Status" />
+    <reg num="5371" name="Station 21 Alarm Status" />
+    <reg num="5372" name="Station 22 Alarm Status" />
+    <reg num="5373" name="Station 23 Alarm Status" />
+    <reg num="5374" name="Station 24 Alarm Status" />
+    <reg num="5375" name="Station 25 Alarm Status" />
+    <reg num="5376" name="Station 26 Alarm Status" />
+    <reg num="5377" name="Station 27 Alarm Status" />
+    <reg num="5378" name="Station 28 Alarm Status" />
+    <reg num="5379" name="Station 29 Alarm Status" />
+    <reg num="5380" name="Station 30 Alarm Status" />
+    <reg num="5381" name="Station 31 Alarm Status" />
+    <reg num="5382" name="Station 32 Alarm Status" />
+    <reg num="5383" name="Station 33 Alarm Status" />
+    <reg num="5384" name="Station 34 Alarm Status" />
+    <reg num="5385" name="Station 35 Alarm Status" />
+    <reg num="5386" name="Station 36 Alarm Status" />
+    <reg num="5387" name="Station 37 Alarm Status" />
+    <reg num="5388" name="Station 38 Alarm Status" />
+    <reg num="5389" name="Station 39 Alarm Status" />
+    <reg num="5390" name="Station 40 Alarm Status" />
+    <reg num="5391" name="Station 41 Alarm Status" />
+    <reg num="5392" name="Station 42 Alarm Status" />
+    <reg num="5393" name="Station 43 Alarm Status" />
+    <reg num="5394" name="Station 44 Alarm Status" />
+    <reg num="5395" name="Station 45 Alarm Status" />
+    <reg num="5396" name="Station 46 Alarm Status" />
+    <reg num="5501" name="FL 01 State" />
+    <reg num="5502" name="FL 02 State" />
+    <reg num="5503" name="FL 03 State" />
+    <reg num="5504" name="FL 04 State" />
+    <reg num="5505" name="FL 05 State" />
+    <reg num="5506" name="FL 06 State" />
+    <reg num="5507" name="FL 07 State" />
+    <reg num="5508" name="FL 08 State" />
+    <reg num="5509" name="FL 09 State" />
+    <reg num="5510" name="FL 10 State" />
+    <reg num="5511" name="FL 11 State" />
+    <reg num="5512" name="FL 12 State" />
+    <reg num="5513" name="FL 13 State" />
+    <reg num="5514" name="FL 14 State" />
+    <reg num="5515" name="FL 15 State" />
+    <reg num="5516" name="FL 16 State" />
+    <reg num="5517" name="FL 17 State" />
+    <reg num="5518" name="FL 18 State" />
+    <reg num="5519" name="FL 19 State" />
+    <reg num="5520" name="FL 20 State" />
+    <reg num="5521" name="FL 21 State" />
+    <reg num="5522" name="FL 22 State" />
+    <reg num="5523" name="FL 23 State" />
+    <reg num="5524" name="FL 24 State" />
+    <reg num="5525" name="FL 25 State" />
+    <reg num="5526" name="FL 26 State" />
+    <reg num="5527" name="FL 27 State" />
+    <reg num="5528" name="FL 28 State" />
+    <reg num="5529" name="FL 29 State" />
+    <reg num="5530" name="FL 30 State" />
+    <reg num="5531" name="FL 31 State" />
+    <reg num="5532" name="FL 32 State" />
+    <reg num="5533" name="FL 33 State" />
+    <reg num="5534" name="FL 34 State" />
+    <reg num="5535" name="FL 35 State" />
+    <reg num="5536" name="FL 36 State" />
+    <reg num="5537" name="FL 37 State" />
+    <reg num="5538" name="FL 38 State" />
+    <reg num="5539" name="FL 39 State" />
+    <reg num="5540" name="FL 40 State" />
+    <reg num="5541" name="FL 41 State" />
+    <reg num="5542" name="FL 42 State" />
+    <reg num="5543" name="FL 43 State" />
+    <reg num="5544" name="FL 44 State" />
+    <reg num="5545" name="FL 45 State" />
+    <reg num="5546" name="FL 46 State" />
+    <reg cloudio="1" logfiles="8" num="5551" perms="1" name="FL 01 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5552" perms="1" name="FL 02 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5553" perms="1" name="FL 03 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5554" perms="1" name="FL 04 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5555" perms="1" name="FL 05 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5556" perms="1" name="FL 06 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5557" perms="1" name="FL 07 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5558" perms="1" name="FL 08 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5559" perms="1" name="FL 09 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5560" perms="1" name="FL 10 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5561" perms="1" name="FL 11 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5562" perms="1" name="FL 12 ON Time" units="min" />
+    <reg num="5563" name="FL 13 ON Time" units="min" />
+    <reg num="5564" name="FL 14 ON Time" units="min" />
+    <reg num="5565" name="FL 15 ON Time" units="min" />
+    <reg num="5566" name="FL 16 ON Time" units="min" />
+    <reg num="5567" name="FL 17 ON Time" units="min" />
+    <reg num="5568" name="FL 18 ON Time" units="min" />
+    <reg num="5569" name="FL 19 ON Time" units="min" />
+    <reg num="5570" name="FL 20 ON Time" units="min" />
+    <reg num="5571" name="FL 21 ON Time" units="min" />
+    <reg num="5572" name="FL 22 ON Time" units="min" />
+    <reg num="5573" name="FL 23 ON Time" units="min" />
+    <reg num="5574" name="FL 24 ON Time" units="min" />
+    <reg num="5575" name="FL 25 ON Time" units="min" />
+    <reg num="5576" name="FL 26 ON Time" units="min" />
+    <reg num="5577" name="FL 27 ON Time" units="min" />
+    <reg num="5578" name="FL 28 ON Time" units="min" />
+    <reg num="5579" name="FL 29 ON Time" units="min" />
+    <reg num="5580" name="FL 30 ON Time" units="min" />
+    <reg num="5581" name="FL 31 ON Time" units="min" />
+    <reg num="5582" name="FL 32 ON Time" units="min" />
+    <reg num="5583" name="FL 33 ON Time" units="min" />
+    <reg num="5584" name="FL 34 ON Time" units="min" />
+    <reg num="5585" name="FL 35 ON Time" units="min" />
+    <reg num="5586" name="FL 36 ON Time" units="min" />
+    <reg num="5587" name="FL 37 ON Time" units="min" />
+    <reg num="5588" name="FL 38 ON Time" units="min" />
+    <reg num="5589" name="FL 39 ON Time" units="min" />
+    <reg num="5590" name="FL 40 ON Time" units="min" />
+    <reg num="5591" name="FL 41 ON Time" units="min" />
+    <reg num="5592" name="FL 42 ON Time" units="min" />
+    <reg num="5593" name="FL 43 ON Time" units="min" />
+    <reg num="5594" name="FL 44 ON Time" units="min" />
+    <reg num="5595" name="FL 45 ON Time" units="min" />
+    <reg num="5596" name="FL 46 ON Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5601" perms="1" name="FL 01 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5602" perms="1" name="FL 02 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5603" perms="1" name="FL 03 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5604" perms="1" name="FL 04 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5605" perms="1" name="FL 05 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5606" perms="1" name="FL 06 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5607" perms="1" name="FL 07 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5608" perms="1" name="FL 08 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5609" perms="1" name="FL 09 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5610" perms="1" name="FL 10 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5611" perms="1" name="FL 11 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5612" perms="1" name="FL 12 OFF Time" units="min" />
+    <reg num="5613" name="FL 13 OFF Time" units="min" />
+    <reg num="5614" name="FL 14 OFF Time" units="min" />
+    <reg num="5615" name="FL 15 OFF Time" units="min" />
+    <reg num="5616" name="FL 16 OFF Time" units="min" />
+    <reg num="5617" name="FL 17 OFF Time" units="min" />
+    <reg num="5618" name="FL 18 OFF Time" units="min" />
+    <reg num="5619" name="FL 19 OFF Time" units="min" />
+    <reg num="5620" name="FL 20 OFF Time" units="min" />
+    <reg num="5621" name="FL 21 OFF Time" units="min" />
+    <reg num="5622" name="FL 22 OFF Time" units="min" />
+    <reg num="5623" name="FL 23 OFF Time" units="min" />
+    <reg num="5624" name="FL 24 OFF Time" units="min" />
+    <reg num="5625" name="FL 25 OFF Time" units="min" />
+    <reg num="5626" name="FL 26 OFF Time" units="min" />
+    <reg num="5627" name="FL 27 OFF Time" units="min" />
+    <reg num="5628" name="FL 28 OFF Time" units="min" />
+    <reg num="5629" name="FL 29 OFF Time" units="min" />
+    <reg num="5630" name="FL 30 OFF Time" units="min" />
+    <reg num="5631" name="FL 31 OFF Time" units="min" />
+    <reg num="5632" name="FL 32 OFF Time" units="min" />
+    <reg num="5633" name="FL 33 OFF Time" units="min" />
+    <reg num="5634" name="FL 34 OFF Time" units="min" />
+    <reg num="5635" name="FL 35 OFF Time" units="min" />
+    <reg num="5636" name="FL 36 OFF Time" units="min" />
+    <reg num="5637" name="FL 37 OFF Time" units="min" />
+    <reg num="5638" name="FL 38 OFF Time" units="min" />
+    <reg num="5639" name="FL 39 OFF Time" units="min" />
+    <reg num="5640" name="FL 40 OFF Time" units="min" />
+    <reg num="5641" name="FL 41 OFF Time" units="min" />
+    <reg num="5642" name="FL 42 OFF Time" units="min" />
+    <reg num="5643" name="FL 43 OFF Time" units="min" />
+    <reg num="5644" name="FL 44 OFF Time" units="min" />
+    <reg num="5645" name="FL 45 OFF Time" units="min" />
+    <reg num="5646" name="FL 46 OFF Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5651" perms="1" name="FL 01 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5652" perms="1" name="FL 02 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5653" perms="1" name="FL 03 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5654" perms="1" name="FL 04 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5655" perms="1" name="FL 05 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5656" perms="1" name="FL 06 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5657" perms="1" name="FL 07 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5658" perms="1" name="FL 08 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5659" perms="1" name="FL 09 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5660" perms="1" name="FL 10 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5661" perms="1" name="FL 11 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5662" perms="1" name="FL 12 Average Serve Time" units="min" />
+    <reg num="5663" name="FL 13 Average Serve Time" units="min" />
+    <reg num="5664" name="FL 14 Average Serve Time" units="min" />
+    <reg num="5665" name="FL 15 Average Serve Time" units="min" />
+    <reg num="5666" name="FL 16 Average Serve Time" units="min" />
+    <reg num="5667" name="FL 17 Average Serve Time" units="min" />
+    <reg num="5668" name="FL 18 Average Serve Time" units="min" />
+    <reg num="5669" name="FL 19 Average Serve Time" units="min" />
+    <reg num="5670" name="FL 20 Average Serve Time" units="min" />
+    <reg num="5671" name="FL 21 Average Serve Time" units="min" />
+    <reg num="5672" name="FL 22 Average Serve Time" units="min" />
+    <reg num="5673" name="FL 23 Average Serve Time" units="min" />
+    <reg num="5674" name="FL 24 Average Serve Time" units="min" />
+    <reg num="5675" name="FL 25 Average Serve Time" units="min" />
+    <reg num="5676" name="FL 26 Average Serve Time" units="min" />
+    <reg num="5677" name="FL 27 Average Serve Time" units="min" />
+    <reg num="5678" name="FL 28 Average Serve Time" units="min" />
+    <reg num="5679" name="FL 29 Average Serve Time" units="min" />
+    <reg num="5680" name="FL 30 Average Serve Time" units="min" />
+    <reg num="5681" name="FL 31 Average Serve Time" units="min" />
+    <reg num="5682" name="FL 32 Average Serve Time" units="min" />
+    <reg num="5683" name="FL 33 Average Serve Time" units="min" />
+    <reg num="5684" name="FL 34 Average Serve Time" units="min" />
+    <reg num="5685" name="FL 35 Average Serve Time" units="min" />
+    <reg num="5686" name="FL 36 Average Serve Time" units="min" />
+    <reg num="5687" name="FL 37 Average Serve Time" units="min" />
+    <reg num="5688" name="FL 38 Average Serve Time" units="min" />
+    <reg num="5689" name="FL 39 Average Serve Time" units="min" />
+    <reg num="5690" name="FL 40 Average Serve Time" units="min" />
+    <reg num="5691" name="FL 41 Average Serve Time" units="min" />
+    <reg num="5692" name="FL 42 Average Serve Time" units="min" />
+    <reg num="5693" name="FL 43 Average Serve Time" units="min" />
+    <reg num="5694" name="FL 44 Average Serve Time" units="min" />
+    <reg num="5695" name="FL 45 Average Serve Time" units="min" />
+    <reg num="5696" name="FL 46 Average Serve Time" units="min" />
+    <reg cloudio="1" logfiles="8" num="5701" perms="1" name="FL 01 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5702" perms="1" name="FL 02 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5703" perms="1" name="FL 03 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5704" perms="1" name="FL 04 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5705" perms="1" name="FL 05 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5706" perms="1" name="FL 06 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5707" perms="1" name="FL 07 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5708" perms="1" name="FL 08 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5709" perms="1" name="FL 09 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5710" perms="1" name="FL 10 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5711" perms="1" name="FL 11 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5712" perms="1" name="FL 12 Average Time to ACK" units="min" />
+    <reg num="5713" name="FL 13 Average Time to ACK" units="min" />
+    <reg num="5714" name="FL 14 Average Time to ACK" units="min" />
+    <reg num="5715" name="FL 15 Average Time to ACK" units="min" />
+    <reg num="5716" name="FL 16 Average Time to ACK" units="min" />
+    <reg num="5717" name="FL 17 Average Time to ACK" units="min" />
+    <reg num="5718" name="FL 18 Average Time to ACK" units="min" />
+    <reg num="5719" name="FL 19 Average Time to ACK" units="min" />
+    <reg num="5720" name="FL 20 Average Time to ACK" units="min" />
+    <reg num="5721" name="FL 21 Average Time to ACK" units="min" />
+    <reg num="5722" name="FL 22 Average Time to ACK" units="min" />
+    <reg num="5723" name="FL 23 Average Time to ACK" units="min" />
+    <reg num="5724" name="FL 24 Average Time to ACK" units="min" />
+    <reg num="5725" name="FL 25 Average Time to ACK" units="min" />
+    <reg num="5726" name="FL 26 Average Time to ACK" units="min" />
+    <reg num="5727" name="FL 27 Average Time to ACK" units="min" />
+    <reg num="5728" name="FL 28 Average Time to ACK" units="min" />
+    <reg num="5729" name="FL 29 Average Time to ACK" units="min" />
+    <reg num="5730" name="FL 30 Average Time to ACK" units="min" />
+    <reg num="5731" name="FL 31 Average Time to ACK" units="min" />
+    <reg num="5732" name="FL 32 Average Time to ACK" units="min" />
+    <reg num="5733" name="FL 33 Average Time to ACK" units="min" />
+    <reg num="5734" name="FL 34 Average Time to ACK" units="min" />
+    <reg num="5735" name="FL 35 Average Time to ACK" units="min" />
+    <reg num="5736" name="FL 36 Average Time to ACK" units="min" />
+    <reg num="5737" name="FL 37 Average Time to ACK" units="min" />
+    <reg num="5738" name="FL 38 Average Time to ACK" units="min" />
+    <reg num="5739" name="FL 39 Average Time to ACK" units="min" />
+    <reg num="5740" name="FL 40 Average Time to ACK" units="min" />
+    <reg num="5741" name="FL 41 Average Time to ACK" units="min" />
+    <reg num="5742" name="FL 42 Average Time to ACK" units="min" />
+    <reg num="5743" name="FL 43 Average Time to ACK" units="min" />
+    <reg num="5744" name="FL 44 Average Time to ACK" units="min" />
+    <reg num="5745" name="FL 45 Average Time to ACK" units="min" />
+    <reg num="5746" name="FL 46 Average Time to ACK" units="min" />
+    <reg cloudio="1" logfiles="8" num="5751" perms="1" name="FL 01 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5752" perms="1" name="FL 02 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5753" perms="1" name="FL 03 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5754" perms="1" name="FL 04 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5755" perms="1" name="FL 05 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5756" perms="1" name="FL 06 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5757" perms="1" name="FL 07 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5758" perms="1" name="FL 08 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5759" perms="1" name="FL 09 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5760" perms="1" name="FL 10 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5761" perms="1" name="FL 11 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5762" perms="1" name="FL 12 Total Availability" units="min" />
+    <reg num="5763" name="FL 13 Total Availability" units="min" />
+    <reg num="5764" name="FL 14 Total Availability" units="min" />
+    <reg num="5765" name="FL 15 Total Availability" units="min" />
+    <reg num="5766" name="FL 16 Total Availability" units="min" />
+    <reg num="5767" name="FL 17 Total Availability" units="min" />
+    <reg num="5768" name="FL 18 Total Availability" units="min" />
+    <reg num="5769" name="FL 19 Total Availability" units="min" />
+    <reg num="5770" name="FL 20 Total Availability" units="min" />
+    <reg num="5771" name="FL 21 Total Availability" units="min" />
+    <reg num="5772" name="FL 22 Total Availability" units="min" />
+    <reg num="5773" name="FL 23 Total Availability" units="min" />
+    <reg num="5774" name="FL 24 Total Availability" units="min" />
+    <reg num="5775" name="FL 25 Total Availability" units="min" />
+    <reg num="5776" name="FL 26 Total Availability" units="min" />
+    <reg num="5777" name="FL 27 Total Availability" units="min" />
+    <reg num="5778" name="FL 28 Total Availability" units="min" />
+    <reg num="5779" name="FL 29 Total Availability" units="min" />
+    <reg num="5780" name="FL 30 Total Availability" units="min" />
+    <reg num="5781" name="FL 31 Total Availability" units="min" />
+    <reg num="5782" name="FL 32 Total Availability" units="min" />
+    <reg num="5783" name="FL 33 Total Availability" units="min" />
+    <reg num="5784" name="FL 34 Total Availability" units="min" />
+    <reg num="5785" name="FL 35 Total Availability" units="min" />
+    <reg num="5786" name="FL 36 Total Availability" units="min" />
+    <reg num="5787" name="FL 37 Total Availability" units="min" />
+    <reg num="5788" name="FL 38 Total Availability" units="min" />
+    <reg num="5789" name="FL 39 Total Availability" units="min" />
+    <reg num="5790" name="FL 40 Total Availability" units="min" />
+    <reg num="5791" name="FL 41 Total Availability" units="min" />
+    <reg num="5792" name="FL 42 Total Availability" units="min" />
+    <reg num="5793" name="FL 43 Total Availability" units="min" />
+    <reg num="5794" name="FL 44 Total Availability" units="min" />
+    <reg num="5795" name="FL 45 Total Availability" units="min" />
+    <reg num="5796" name="FL 46 Total Availability" units="min" />
+    <reg cloudio="1" logfiles="8" num="5801" perms="1" name="FL 01 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5802" perms="1" name="FL 02 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5803" perms="1" name="FL 03 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5804" perms="1" name="FL 04 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5805" perms="1" name="FL 05 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5806" perms="1" name="FL 06 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5807" perms="1" name="FL 07 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5808" perms="1" name="FL 08 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5809" perms="1" name="FL 09 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5810" perms="1" name="FL 10 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5811" perms="1" name="FL 11 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5812" perms="1" name="FL 12 Calls Cancelled" />
+    <reg num="5813" name="FL 13 Calls Cancelled" />
+    <reg num="5814" name="FL 14 Calls Cancelled" />
+    <reg num="5815" name="FL 15 Calls Cancelled" />
+    <reg num="5816" name="FL 16 Calls Cancelled" />
+    <reg num="5817" name="FL 17 Calls Cancelled" />
+    <reg num="5818" name="FL 18 Calls Cancelled" />
+    <reg num="5819" name="FL 19 Calls Cancelled" />
+    <reg num="5820" name="FL 20 Calls Cancelled" />
+    <reg num="5821" name="FL 21 Calls Cancelled" />
+    <reg num="5822" name="FL 22 Calls Cancelled" />
+    <reg num="5823" name="FL 23 Calls Cancelled" />
+    <reg num="5824" name="FL 24 Calls Cancelled" />
+    <reg num="5825" name="FL 25 Calls Cancelled" />
+    <reg num="5826" name="FL 26 Calls Cancelled" />
+    <reg num="5827" name="FL 27 Calls Cancelled" />
+    <reg num="5828" name="FL 28 Calls Cancelled" />
+    <reg num="5829" name="FL 29 Calls Cancelled" />
+    <reg num="5830" name="FL 30 Calls Cancelled" />
+    <reg num="5831" name="FL 31 Calls Cancelled" />
+    <reg num="5832" name="FL 32 Calls Cancelled" />
+    <reg num="5833" name="FL 33 Calls Cancelled" />
+    <reg num="5834" name="FL 34 Calls Cancelled" />
+    <reg num="5835" name="FL 35 Calls Cancelled" />
+    <reg num="5836" name="FL 36 Calls Cancelled" />
+    <reg num="5837" name="FL 37 Calls Cancelled" />
+    <reg num="5838" name="FL 38 Calls Cancelled" />
+    <reg num="5839" name="FL 39 Calls Cancelled" />
+    <reg num="5840" name="FL 40 Calls Cancelled" />
+    <reg num="5841" name="FL 41 Calls Cancelled" />
+    <reg num="5842" name="FL 42 Calls Cancelled" />
+    <reg num="5843" name="FL 43 Calls Cancelled" />
+    <reg num="5844" name="FL 44 Calls Cancelled" />
+    <reg num="5845" name="FL 45 Calls Cancelled" />
+    <reg num="5846" name="FL 46 Calls Cancelled" />
+    <reg cloudio="1" logfiles="8" num="5851" perms="1" name="FL 01 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5852" perms="1" name="FL 02 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5853" perms="1" name="FL 03 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5854" perms="1" name="FL 04 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5855" perms="1" name="FL 05 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5856" perms="1" name="FL 06 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5857" perms="1" name="FL 07 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5858" perms="1" name="FL 08 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5859" perms="1" name="FL 09 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5860" perms="1" name="FL 10 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5861" perms="1" name="FL 11 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="5862" perms="1" name="FL 12 Calls Completed" />
+    <reg num="5863" name="FL 13 Calls Completed" />
+    <reg num="5864" name="FL 14 Calls Completed" />
+    <reg num="5865" name="FL 15 Calls Completed" />
+    <reg num="5866" name="FL 16 Calls Completed" />
+    <reg num="5867" name="FL 17 Calls Completed" />
+    <reg num="5868" name="FL 18 Calls Completed" />
+    <reg num="5869" name="FL 19 Calls Completed" />
+    <reg num="5870" name="FL 20 Calls Completed" />
+    <reg num="5871" name="FL 21 Calls Completed" />
+    <reg num="5872" name="FL 22 Calls Completed" />
+    <reg num="5873" name="FL 23 Calls Completed" />
+    <reg num="5874" name="FL 24 Calls Completed" />
+    <reg num="5875" name="FL 25 Calls Completed" />
+    <reg num="5876" name="FL 26 Calls Completed" />
+    <reg num="5877" name="FL 27 Calls Completed" />
+    <reg num="5878" name="FL 28 Calls Completed" />
+    <reg num="5879" name="FL 29 Calls Completed" />
+    <reg num="5880" name="FL 30 Calls Completed" />
+    <reg num="5881" name="FL 31 Calls Completed" />
+    <reg num="5882" name="FL 32 Calls Completed" />
+    <reg num="5883" name="FL 33 Calls Completed" />
+    <reg num="5884" name="FL 34 Calls Completed" />
+    <reg num="5885" name="FL 35 Calls Completed" />
+    <reg num="5886" name="FL 36 Calls Completed" />
+    <reg num="5887" name="FL 37 Calls Completed" />
+    <reg num="5888" name="FL 38 Calls Completed" />
+    <reg num="5889" name="FL 39 Calls Completed" />
+    <reg num="5890" name="FL 40 Calls Completed" />
+    <reg num="5891" name="FL 41 Calls Completed" />
+    <reg num="5892" name="FL 42 Calls Completed" />
+    <reg num="5893" name="FL 43 Calls Completed" />
+    <reg num="5894" name="FL 44 Calls Completed" />
+    <reg num="5895" name="FL 45 Calls Completed" />
+    <reg num="5896" name="FL 46 Calls Completed" />
+    <reg cloudio="1" logfiles="8" num="6001" perms="1" name="Station - QP01" />
+    <reg cloudio="1" logfiles="8" num="6002" perms="1" name="Station - QP02" />
+    <reg cloudio="1" logfiles="8" num="6003" perms="1" name="Station - QP03" />
+    <reg cloudio="1" logfiles="8" num="6004" perms="1" name="Station - QP04" />
+    <reg cloudio="1" logfiles="8" num="6005" perms="1" name="Station - QP05" />
+    <reg cloudio="1" logfiles="8" num="6006" perms="1" name="Station - QP06" />
+    <reg cloudio="1" logfiles="8" num="6007" perms="1" name="Station - QP07" />
+    <reg cloudio="1" logfiles="8" num="6008" perms="1" name="Station - QP08" />
+    <reg cloudio="1" logfiles="8" num="6009" perms="1" name="Station - QP09" />
+    <reg cloudio="1" logfiles="8" num="6010" perms="1" name="Station - QP10" />
+    <reg cloudio="1" logfiles="8" num="6011" perms="1" name="Station - QP11" />
+    <reg cloudio="1" logfiles="8" num="6012" perms="1" name="Station - QP12" />
+    <reg cloudio="1" logfiles="8" num="6013" perms="1" name="Station - QP13" />
+    <reg cloudio="1" logfiles="8" num="6014" perms="1" name="Station - QP14" />
+    <reg cloudio="1" logfiles="8" num="6015" perms="1" name="Station - QP15" />
+    <reg cloudio="1" logfiles="8" num="6016" perms="1" name="Station - QP16" />
+    <reg cloudio="1" logfiles="8" num="6017" perms="1" name="Station - QP17" />
+    <reg cloudio="1" logfiles="8" num="6018" perms="1" name="Station - QP18" />
+    <reg cloudio="1" logfiles="8" num="6019" perms="1" name="Station - QP19" />
+    <reg cloudio="1" logfiles="8" num="6020" perms="1" name="Station - QP20" />
+    <reg cloudio="1" logfiles="8" num="6021" perms="1" name="Station - QP21" />
+    <reg cloudio="1" logfiles="8" num="6022" perms="1" name="Station - QP22" />
+    <reg cloudio="1" logfiles="8" num="6023" perms="1" name="Station - QP23" />
+    <reg cloudio="1" logfiles="8" num="6024" perms="1" name="Station - QP24" />
+    <reg cloudio="1" logfiles="8" num="6025" perms="1" name="Station - QP25" />
+    <reg cloudio="1" logfiles="8" num="6026" perms="1" name="Station - QP26" />
+    <reg cloudio="1" logfiles="8" num="6027" perms="1" name="Station - QP27" />
+    <reg cloudio="1" logfiles="8" num="6028" perms="1" name="Station - QP28" />
+    <reg cloudio="1" logfiles="8" num="6029" perms="1" name="Station - QP29" />
+    <reg cloudio="1" logfiles="8" num="6030" perms="1" name="Station - QP30" />
+    <reg num="6031" name="Station - QP31" />
+    <reg num="6032" name="Station - QP32" />
+    <reg num="6033" name="Station - QP33" />
+    <reg num="6034" name="Station - QP34" />
+    <reg num="6035" name="Station - QP35" />
+    <reg num="6036" name="Station - QP36" />
+    <reg num="6037" name="Station - QP37" />
+    <reg num="6038" name="Station - QP38" />
+    <reg num="6039" name="Station - QP39" />
+    <reg num="6040" name="Station - QP40" />
+    <reg num="6041" name="Station - QP41" />
+    <reg num="6042" name="Station - QP42" />
+    <reg num="6043" name="Station - QP43" />
+    <reg num="6044" name="Station - QP44" />
+    <reg num="6045" name="Station - QP45" />
+    <reg num="6046" name="Station - QP46" />
+    <reg cloudio="1" logfiles="8" num="6051" perms="1" name="Call time - QP01" units="min" />
+    <reg cloudio="1" logfiles="8" num="6052" perms="1" name="Call time - QP02" units="min" />
+    <reg cloudio="1" logfiles="8" num="6053" perms="1" name="Call time - QP03" units="min" />
+    <reg cloudio="1" logfiles="8" num="6054" perms="1" name="Call time - QP04" units="min" />
+    <reg cloudio="1" logfiles="8" num="6055" perms="1" name="Call time - QP05" units="min" />
+    <reg cloudio="1" logfiles="8" num="6056" perms="1" name="Call time - QP06" units="min" />
+    <reg cloudio="1" logfiles="8" num="6057" perms="1" name="Call time - QP07" units="min" />
+    <reg cloudio="1" logfiles="8" num="6058" perms="1" name="Call time - QP08" units="min" />
+    <reg cloudio="1" logfiles="8" num="6059" perms="1" name="Call time - QP09" units="min" />
+    <reg cloudio="1" logfiles="8" num="6060" perms="1" name="Call time - QP10" units="min" />
+    <reg cloudio="1" logfiles="8" num="6061" perms="1" name="Call time - QP11" units="min" />
+    <reg cloudio="1" logfiles="8" num="6062" perms="1" name="Call time - QP12" units="min" />
+    <reg cloudio="1" logfiles="8" num="6063" perms="1" name="Call time - QP13" units="min" />
+    <reg cloudio="1" logfiles="8" num="6064" perms="1" name="Call time - QP14" units="min" />
+    <reg cloudio="1" logfiles="8" num="6065" perms="1" name="Call time - QP15" units="min" />
+    <reg cloudio="1" logfiles="8" num="6066" perms="1" name="Call time - QP16" units="min" />
+    <reg cloudio="1" logfiles="8" num="6067" perms="1" name="Call time - QP17" units="min" />
+    <reg cloudio="1" logfiles="8" num="6068" perms="1" name="Call time - QP18" units="min" />
+    <reg cloudio="1" logfiles="8" num="6069" perms="1" name="Call time - QP19" units="min" />
+    <reg cloudio="1" logfiles="8" num="6070" perms="1" name="Call time - QP20" units="min" />
+    <reg cloudio="1" logfiles="8" num="6071" perms="1" name="Call time - QP21" units="min" />
+    <reg cloudio="1" logfiles="8" num="6072" perms="1" name="Call time - QP22" units="min" />
+    <reg cloudio="1" logfiles="8" num="6073" perms="1" name="Call time - QP23" units="min" />
+    <reg cloudio="1" logfiles="8" num="6074" perms="1" name="Call time - QP24" units="min" />
+    <reg cloudio="1" logfiles="8" num="6075" perms="1" name="Call time - QP25" units="min" />
+    <reg cloudio="1" logfiles="8" num="6076" perms="1" name="Call time - QP26" units="min" />
+    <reg cloudio="1" logfiles="8" num="6077" perms="1" name="Call time - QP27" units="min" />
+    <reg cloudio="1" logfiles="8" num="6078" perms="1" name="Call time - QP28" units="min" />
+    <reg cloudio="1" logfiles="8" num="6079" perms="1" name="Call time - QP29" units="min" />
+    <reg cloudio="1" logfiles="8" num="6080" perms="1" name="Call time - QP30" units="min" />
+    <reg num="6081" name="Call time - QP31" units="min" />
+    <reg num="6082" name="Call time - QP32" units="min" />
+    <reg num="6083" name="Call time - QP33" units="min" />
+    <reg num="6084" name="Call time - QP34" units="min" />
+    <reg num="6085" name="Call time - QP35" units="min" />
+    <reg num="6086" name="Call time - QP36" units="min" />
+    <reg num="6087" name="Call time - QP37" units="min" />
+    <reg num="6088" name="Call time - QP38" units="min" />
+    <reg num="6089" name="Call time - QP39" units="min" />
+    <reg num="6090" name="Call time - QP40" units="min" />
+    <reg num="6091" name="Call time - QP41" units="min" />
+    <reg num="6092" name="Call time - QP42" units="min" />
+    <reg num="6093" name="Call time - QP43" units="min" />
+    <reg num="6094" name="Call time - QP44" units="min" />
+    <reg num="6095" name="Call time - QP45" units="min" />
+    <reg num="6096" name="Call time - QP46" units="min" />
+    <reg cloudio="1" logfiles="8" num="6101" perms="1" name="Ack-Calling time - QP01" units="min" />
+    <reg cloudio="1" logfiles="8" num="6102" perms="1" name="Ack-Calling time - QP02" units="min" />
+    <reg cloudio="1" logfiles="8" num="6103" perms="1" name="Ack-Calling time - QP03" units="min" />
+    <reg cloudio="1" logfiles="8" num="6104" perms="1" name="Ack-Calling time - QP04" units="min" />
+    <reg cloudio="1" logfiles="8" num="6105" perms="1" name="Ack-Calling time - QP05" units="min" />
+    <reg cloudio="1" logfiles="8" num="6106" perms="1" name="Ack-Calling time - QP06" units="min" />
+    <reg cloudio="1" logfiles="8" num="6107" perms="1" name="Ack-Calling time - QP07" units="min" />
+    <reg cloudio="1" logfiles="8" num="6108" perms="1" name="Ack-Calling time - QP08" units="min" />
+    <reg cloudio="1" logfiles="8" num="6109" perms="1" name="Ack-Calling time - QP09" units="min" />
+    <reg cloudio="1" logfiles="8" num="6110" perms="1" name="Ack-Calling time - QP10" units="min" />
+    <reg cloudio="1" logfiles="8" num="6111" perms="1" name="Ack-Calling time - QP11" units="min" />
+    <reg cloudio="1" logfiles="8" num="6112" perms="1" name="Ack-Calling time - QP12" units="min" />
+    <reg cloudio="1" logfiles="8" num="6113" perms="1" name="Ack-Calling time - QP13" units="min" />
+    <reg cloudio="1" logfiles="8" num="6114" perms="1" name="Ack-Calling time - QP14" units="min" />
+    <reg cloudio="1" logfiles="8" num="6115" perms="1" name="Ack-Calling time - QP15" units="min" />
+    <reg cloudio="1" logfiles="8" num="6116" perms="1" name="Ack-Calling time - QP16" units="min" />
+    <reg cloudio="1" logfiles="8" num="6117" perms="1" name="Ack-Calling time - QP17" units="min" />
+    <reg cloudio="1" logfiles="8" num="6118" perms="1" name="Ack-Calling time - QP18" units="min" />
+    <reg cloudio="1" logfiles="8" num="6119" perms="1" name="Ack-Calling time - QP19" units="min" />
+    <reg cloudio="1" logfiles="8" num="6120" perms="1" name="Ack-Calling time - QP20" units="min" />
+    <reg cloudio="1" logfiles="8" num="6121" perms="1" name="Ack-Calling time - QP21" units="min" />
+    <reg cloudio="1" logfiles="8" num="6122" perms="1" name="Ack-Calling time - QP22" units="min" />
+    <reg cloudio="1" logfiles="8" num="6123" perms="1" name="Ack-Calling time - QP23" units="min" />
+    <reg cloudio="1" logfiles="8" num="6124" perms="1" name="Ack-Calling time - QP24" units="min" />
+    <reg cloudio="1" logfiles="8" num="6125" perms="1" name="Ack-Calling time - QP25" units="min" />
+    <reg cloudio="1" logfiles="8" num="6126" perms="1" name="Ack-Calling time - QP26" units="min" />
+    <reg cloudio="1" logfiles="8" num="6127" perms="1" name="Ack-Calling time - QP27" units="min" />
+    <reg cloudio="1" logfiles="8" num="6128" perms="1" name="Ack-Calling time - QP28" units="min" />
+    <reg cloudio="1" logfiles="8" num="6129" perms="1" name="Ack-Calling time - QP29" units="min" />
+    <reg cloudio="1" logfiles="8" num="6130" perms="1" name="Ack-Calling time - QP30" units="min" />
+    <reg num="6131" name="Ack-Calling time - QP31" units="min" />
+    <reg num="6132" name="Ack-Calling time - QP32" units="min" />
+    <reg num="6133" name="Ack-Calling time - QP33" units="min" />
+    <reg num="6134" name="Ack-Calling time - QP34" units="min" />
+    <reg num="6135" name="Ack-Calling time - QP35" units="min" />
+    <reg num="6136" name="Ack-Calling time - QP36" units="min" />
+    <reg num="6137" name="Ack-Calling time - QP37" units="min" />
+    <reg num="6138" name="Ack-Calling time - QP38" units="min" />
+    <reg num="6139" name="Ack-Calling time - QP39" units="min" />
+    <reg num="6140" name="Ack-Calling time - QP40" units="min" />
+    <reg num="6141" name="Ack-Calling time - QP41" units="min" />
+    <reg num="6142" name="Ack-Calling time - QP42" units="min" />
+    <reg num="6143" name="Ack-Calling time - QP43" units="min" />
+    <reg num="6144" name="Ack-Calling time - QP44" units="min" />
+    <reg num="6145" name="Ack-Calling time - QP45" units="min" />
+    <reg num="6146" name="Ack-Calling time - QP46" units="min" />
+    <reg cloudio="1" logfiles="8" num="6151" perms="1" name="Forklift - QP01" />
+    <reg cloudio="1" logfiles="8" num="6152" perms="1" name="Forklift - QP02" />
+    <reg cloudio="1" logfiles="8" num="6153" perms="1" name="Forklift - QP03" />
+    <reg cloudio="1" logfiles="8" num="6154" perms="1" name="Forklift - QP04" />
+    <reg cloudio="1" logfiles="8" num="6155" perms="1" name="Forklift - QP05" />
+    <reg cloudio="1" logfiles="8" num="6156" perms="1" name="Forklift - QP06" />
+    <reg cloudio="1" logfiles="8" num="6157" perms="1" name="Forklift - QP07" />
+    <reg cloudio="1" logfiles="8" num="6158" perms="1" name="Forklift - QP08" />
+    <reg cloudio="1" logfiles="8" num="6159" perms="1" name="Forklift - QP09" />
+    <reg cloudio="1" logfiles="8" num="6160" perms="1" name="Forklift - QP10" />
+    <reg cloudio="1" logfiles="8" num="6161" perms="1" name="Forklift - QP11" />
+    <reg cloudio="1" logfiles="8" num="6162" perms="1" name="Forklift - QP12" />
+    <reg cloudio="1" logfiles="8" num="6163" perms="1" name="Forklift - QP13" />
+    <reg cloudio="1" logfiles="8" num="6164" perms="1" name="Forklift - QP14" />
+    <reg cloudio="1" logfiles="8" num="6165" perms="1" name="Forklift - QP15" />
+    <reg cloudio="1" logfiles="8" num="6166" perms="1" name="Forklift - QP16" />
+    <reg cloudio="1" logfiles="8" num="6167" perms="1" name="Forklift - QP17" />
+    <reg cloudio="1" logfiles="8" num="6168" perms="1" name="Forklift - QP18" />
+    <reg cloudio="1" logfiles="8" num="6169" perms="1" name="Forklift - QP19" />
+    <reg cloudio="1" logfiles="8" num="6170" perms="1" name="Forklift - QP20" />
+    <reg cloudio="1" logfiles="8" num="6171" perms="1" name="Forklift - QP21" />
+    <reg cloudio="1" logfiles="8" num="6172" perms="1" name="Forklift - QP22" />
+    <reg cloudio="1" logfiles="8" num="6173" perms="1" name="Forklift - QP23" />
+    <reg cloudio="1" logfiles="8" num="6174" perms="1" name="Forklift - QP24" />
+    <reg cloudio="1" logfiles="8" num="6175" perms="1" name="Forklift - QP25" />
+    <reg cloudio="1" logfiles="8" num="6176" perms="1" name="Forklift - QP26" />
+    <reg cloudio="1" logfiles="8" num="6177" perms="1" name="Forklift - QP27" />
+    <reg cloudio="1" logfiles="8" num="6178" perms="1" name="Forklift - QP28" />
+    <reg cloudio="1" logfiles="8" num="6179" perms="1" name="Forklift - QP29" />
+    <reg cloudio="1" logfiles="8" num="6180" perms="1" name="Forklift - QP30" />
+    <reg num="6181" name="Forklift - QP31" />
+    <reg num="6182" name="Forklift - QP32" />
+    <reg num="6183" name="Forklift - QP33" />
+    <reg num="6184" name="Forklift - QP34" />
+    <reg num="6185" name="Forklift - QP35" />
+    <reg num="6186" name="Forklift - QP36" />
+    <reg num="6187" name="Forklift - QP37" />
+    <reg num="6188" name="Forklift - QP38" />
+    <reg num="6189" name="Forklift - QP39" />
+    <reg num="6190" name="Forklift - QP40" />
+    <reg num="6191" name="Forklift - QP41" />
+    <reg num="6192" name="Forklift - QP42" />
+    <reg num="6193" name="Forklift - QP43" />
+    <reg num="6194" name="Forklift - QP44" />
+    <reg num="6195" name="Forklift - QP45" />
+    <reg num="6196" name="Forklift - QP46" />
+    <reg cloudio="1" logfiles="8" num="6201" perms="1" name="Priority Level - QP01" />
+    <reg cloudio="1" logfiles="8" num="6202" perms="1" name="Priority Level - QP02" />
+    <reg cloudio="1" logfiles="8" num="6203" perms="1" name="Priority Level - QP03" />
+    <reg cloudio="1" logfiles="8" num="6204" perms="1" name="Priority Level - QP04" />
+    <reg cloudio="1" logfiles="8" num="6205" perms="1" name="Priority Level - QP05" />
+    <reg cloudio="1" logfiles="8" num="6206" perms="1" name="Priority Level - QP06" />
+    <reg cloudio="1" logfiles="8" num="6207" perms="1" name="Priority Level - QP07" />
+    <reg cloudio="1" logfiles="8" num="6208" perms="1" name="Priority Level - QP08" />
+    <reg cloudio="1" logfiles="8" num="6209" perms="1" name="Priority Level - QP09" />
+    <reg cloudio="1" logfiles="8" num="6210" perms="1" name="Priority Level - QP10" />
+    <reg cloudio="1" logfiles="8" num="6211" perms="1" name="Priority Level - QP11" />
+    <reg cloudio="1" logfiles="8" num="6212" perms="1" name="Priority Level - QP12" />
+    <reg cloudio="1" logfiles="8" num="6213" perms="1" name="Priority Level - QP13" />
+    <reg cloudio="1" logfiles="8" num="6214" perms="1" name="Priority Level - QP14" />
+    <reg cloudio="1" logfiles="8" num="6215" perms="1" name="Priority Level - QP15" />
+    <reg cloudio="1" logfiles="8" num="6216" perms="1" name="Priority Level - QP16" />
+    <reg cloudio="1" logfiles="8" num="6217" perms="1" name="Priority Level - QP17" />
+    <reg cloudio="1" logfiles="8" num="6218" perms="1" name="Priority Level - QP18" />
+    <reg cloudio="1" logfiles="8" num="6219" perms="1" name="Priority Level - QP19" />
+    <reg cloudio="1" logfiles="8" num="6220" perms="1" name="Priority Level - QP20" />
+    <reg cloudio="1" logfiles="8" num="6221" perms="1" name="Priority Level - QP21" />
+    <reg cloudio="1" logfiles="8" num="6222" perms="1" name="Priority Level - QP22" />
+    <reg cloudio="1" logfiles="8" num="6223" perms="1" name="Priority Level - QP23" />
+    <reg cloudio="1" logfiles="8" num="6224" perms="1" name="Priority Level - QP24" />
+    <reg cloudio="1" logfiles="8" num="6225" perms="1" name="Priority Level - QP25" />
+    <reg cloudio="1" logfiles="8" num="6226" perms="1" name="Priority Level - QP26" />
+    <reg cloudio="1" logfiles="8" num="6227" perms="1" name="Priority Level - QP27" />
+    <reg cloudio="1" logfiles="8" num="6228" perms="1" name="Priority Level - QP28" />
+    <reg cloudio="1" logfiles="8" num="6229" perms="1" name="Priority Level - QP29" />
+    <reg cloudio="1" logfiles="8" num="6230" perms="1" name="Priority Level - QP30" />
+    <reg num="6231" name="Priority Level - QP31" />
+    <reg num="6232" name="Priority Level - QP32" />
+    <reg num="6233" name="Priority Level - QP33" />
+    <reg num="6234" name="Priority Level - QP34" />
+    <reg num="6235" name="Priority Level - QP35" />
+    <reg num="6236" name="Priority Level - QP36" />
+    <reg num="6237" name="Priority Level - QP37" />
+    <reg num="6238" name="Priority Level - QP38" />
+    <reg num="6239" name="Priority Level - QP39" />
+    <reg num="6240" name="Priority Level - QP40" />
+    <reg num="6241" name="Priority Level - QP41" />
+    <reg num="6242" name="Priority Level - QP42" />
+    <reg num="6243" name="Priority Level - QP43" />
+    <reg num="6244" name="Priority Level - QP44" />
+    <reg num="6245" name="Priority Level - QP45" />
+    <reg num="6246" name="Priority Level - QP46" />
+    <reg cloudio="1" logfiles="8" num="6251" perms="1" name="Station Status - QP01" />
+    <reg cloudio="1" logfiles="8" num="6252" perms="1" name="Station Status - QP02" />
+    <reg cloudio="1" logfiles="8" num="6253" perms="1" name="Station Status - QP03" />
+    <reg cloudio="1" logfiles="8" num="6254" perms="1" name="Station Status - QP04" />
+    <reg cloudio="1" logfiles="8" num="6255" perms="1" name="Station Status - QP05" />
+    <reg cloudio="1" logfiles="8" num="6256" perms="1" name="Station Status - QP06" />
+    <reg cloudio="1" logfiles="8" num="6257" perms="1" name="Station Status - QP07" />
+    <reg cloudio="1" logfiles="8" num="6258" perms="1" name="Station Status - QP08" />
+    <reg cloudio="1" logfiles="8" num="6259" perms="1" name="Station Status - QP09" />
+    <reg cloudio="1" logfiles="8" num="6260" perms="1" name="Station Status - QP10" />
+    <reg cloudio="1" logfiles="8" num="6261" perms="1" name="Station Status - QP11" />
+    <reg cloudio="1" logfiles="8" num="6262" perms="1" name="Station Status - QP12" />
+    <reg cloudio="1" logfiles="8" num="6263" perms="1" name="Station Status - QP13" />
+    <reg cloudio="1" logfiles="8" num="6264" perms="1" name="Station Status - QP14" />
+    <reg cloudio="1" logfiles="8" num="6265" perms="1" name="Station Status - QP15" />
+    <reg cloudio="1" logfiles="8" num="6266" perms="1" name="Station Status - QP16" />
+    <reg cloudio="1" logfiles="8" num="6267" perms="1" name="Station Status - QP17" />
+    <reg cloudio="1" logfiles="8" num="6268" perms="1" name="Station Status - QP18" />
+    <reg cloudio="1" logfiles="8" num="6269" perms="1" name="Station Status - QP19" />
+    <reg cloudio="1" logfiles="8" num="6270" perms="1" name="Station Status - QP20" />
+    <reg cloudio="1" logfiles="8" num="6271" perms="1" name="Station Status - QP21" />
+    <reg cloudio="1" logfiles="8" num="6272" perms="1" name="Station Status - QP22" />
+    <reg cloudio="1" logfiles="8" num="6273" perms="1" name="Station Status - QP23" />
+    <reg cloudio="1" logfiles="8" num="6274" perms="1" name="Station Status - QP24" />
+    <reg cloudio="1" logfiles="8" num="6275" perms="1" name="Station Status - QP25" />
+    <reg cloudio="1" logfiles="8" num="6276" perms="1" name="Station Status - QP26" />
+    <reg cloudio="1" logfiles="8" num="6277" perms="1" name="Station Status - QP27" />
+    <reg cloudio="1" logfiles="8" num="6278" perms="1" name="Station Status - QP28" />
+    <reg cloudio="1" logfiles="8" num="6279" perms="1" name="Station Status - QP29" />
+    <reg cloudio="1" logfiles="8" num="6280" perms="1" name="Station Status - QP30" />
+    <reg num="6281" name="Station Status - QP31" />
+    <reg num="6282" name="Station Status - QP32" />
+    <reg num="6283" name="Station Status - QP33" />
+    <reg num="6284" name="Station Status - QP34" />
+    <reg num="6285" name="Station Status - QP35" />
+    <reg num="6286" name="Station Status - QP36" />
+    <reg num="6287" name="Station Status - QP37" />
+    <reg num="6288" name="Station Status - QP38" />
+    <reg num="6289" name="Station Status - QP39" />
+    <reg num="6290" name="Station Status - QP40" />
+    <reg num="6291" name="Station Status - QP41" />
+    <reg num="6292" name="Station Status - QP42" />
+    <reg num="6293" name="Station Status - QP43" />
+    <reg num="6294" name="Station Status - QP44" />
+    <reg num="6295" name="Station Status - QP45" />
+    <reg num="6296" name="Station Status - QP46" />
+    <reg cloudio="1" logfiles="72" num="7001" perms="3" name="Station 01 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7002" perms="3" name="Station 02 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7003" perms="3" name="Station 03 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7004" perms="3" name="Station 04 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7005" perms="3" name="Station 05 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7006" perms="3" name="Station 06 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7007" perms="3" name="Station 07 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7008" perms="3" name="Station 08 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7009" perms="3" name="Station 09 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7010" perms="3" name="Station 10 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7011" perms="3" name="Station 11 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7012" perms="3" name="Station 12 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7013" perms="3" name="Station 13 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7014" perms="3" name="Station 14 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7015" perms="3" name="Station 15 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7016" perms="3" name="Station 16 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7017" perms="3" name="Station 17 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7018" perms="3" name="Station 18 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7019" perms="3" name="Station 19 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7020" perms="3" name="Station 20 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7021" perms="3" name="Station 21 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7022" perms="3" name="Station 22 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7023" perms="3" name="Station 23 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7024" perms="3" name="Station 24 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7025" perms="3" name="Station 25 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7026" perms="3" name="Station 26 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7027" perms="3" name="Station 27 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7028" perms="3" name="Station 28 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7029" perms="3" name="Station 29 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7030" perms="3" name="Station 30 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7031" perms="3" name="Station 31 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7032" perms="3" name="Station 32 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7033" perms="3" name="Station 33 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7034" perms="3" name="Station 34 Priority Level" lcd="3" />
+    <reg cloudio="1" logfiles="72" num="7035" perms="3" name="Station 35 Priority Level" lcd="3" />
+    <reg num="7036" name="Station 36 Priority Level" lcd="3" />
+    <reg num="7037" name="Station 37 Priority Level" lcd="3" />
+    <reg num="7038" name="Station 38 Priority Level" lcd="3" />
+    <reg num="7039" name="Station 39 Priority Level" lcd="3" />
+    <reg num="7040" name="Station 40 Priority Level" lcd="3" />
+    <reg num="7041" name="Station 41 Priority Level" lcd="3" />
+    <reg num="7042" name="Station 42 Priority Level" lcd="3" />
+    <reg num="7043" name="Station 43 Priority Level" lcd="3" />
+    <reg num="7044" name="Station 44 Priority Level" lcd="3" />
+    <reg num="7045" name="Station 45 Priority Level" lcd="3" />
+    <reg num="7046" name="Station 46 Priority Level" lcd="3" />
+    <reg num="7051" name="Station 01 Alt Num" />
+    <reg num="7052" name="Station 02 Alt Num" />
+    <reg num="7053" name="Station 03 Alt Num" />
+    <reg num="7054" name="Station 04 Alt Num" />
+    <reg num="7055" name="Station 05 Alt Num" />
+    <reg num="7056" name="Station 06 Alt Num" />
+    <reg num="7057" name="Station 07 Alt Num" />
+    <reg num="7058" name="Station 08 Alt Num" />
+    <reg num="7059" name="Station 09 Alt Num" />
+    <reg num="7060" name="Station 10 Alt Num" />
+    <reg num="7061" name="Station 11 Alt Num" />
+    <reg num="7062" name="Station 12 Alt Num" />
+    <reg num="7063" name="Station 13 Alt Num" />
+    <reg num="7064" name="Station 14 Alt Num" />
+    <reg num="7065" name="Station 15 Alt Num" />
+    <reg num="7066" name="Station 16 Alt Num" />
+    <reg num="7067" name="Station 17 Alt Num" />
+    <reg num="7068" name="Station 18 Alt Num" />
+    <reg num="7069" name="Station 19 Alt Num" />
+    <reg num="7070" name="Station 20 Alt Num" />
+    <reg num="7071" name="Station 21 Alt Num" />
+    <reg num="7072" name="Station 22 Alt Num" />
+    <reg num="7073" name="Station 23 Alt Num" />
+    <reg num="7074" name="Station 24 Alt Num" />
+    <reg num="7075" name="Station 25 Alt Num" />
+    <reg num="7076" name="Station 26 Alt Num" />
+    <reg num="7077" name="Station 27 Alt Num" />
+    <reg num="7078" name="Station 28 Alt Num" />
+    <reg num="7079" name="Station 29 Alt Num" />
+    <reg num="7080" name="Station 30 Alt Num" />
+    <reg num="7081" name="Station 31 Alt Num" />
+    <reg num="7082" name="Station 32 Alt Num" />
+    <reg num="7083" name="Station 33 Alt Num" />
+    <reg num="7084" name="Station 34 Alt Num" />
+    <reg num="7085" name="Station 35 Alt Num" />
+    <reg num="7086" name="Station 36 Alt Num" />
+    <reg num="7087" name="Station 37 Alt Num" />
+    <reg num="7088" name="Station 38 Alt Num" />
+    <reg num="7089" name="Station 39 Alt Num" />
+    <reg num="7090" name="Station 40 Alt Num" />
+    <reg num="7091" name="Station 41 Alt Num" />
+    <reg num="7092" name="Station 42 Alt Num" />
+    <reg num="7093" name="Station 43 Alt Num" />
+    <reg num="7094" name="Station 44 Alt Num" />
+    <reg num="7095" name="Station 45 Alt Num" />
+    <reg num="7096" name="Station 46 Alt Num" />
+  </local_regs>
+  <cascade />
+  <constant />
+  <calculate />
+  <thresholds />
+  <trend />
+  <rtu_read />
+  <rtu_write />
+  <sched_holidays />
+  <sched_commands />
+  <sched_events />
+  <astro_clock>
+    <set dst="0" lat="0" lon="0" zone="0" />
+  </astro_clock>
+  <gps>
+    <unit addr="0" enabled="0" flags="0" lograte="00:00:00" poll="00:00:00" />
+  </gps>
+  <master_mode>
+    <mode opt="0" state="0" flags="0" map="1" />
+  </master_mode>
+  <rtu_device>
+    <dev baud="19200" commtype="485" data="8" parity="0" stop="1" rate="50" thisUnit="1" timeout="5" />
+    <bus baud="19200" commtype="4" data="8" parity="0" stop="1" rate="50" thisUnit="255" timeout="5" />
+  </rtu_device>
+  <rtu_server>
+    <dev baud="19200" commtype="485" data="8" parity="0" stop="1" timeout="0" />
+  </rtu_server>
+  <scripts>
+    <script enabled="1" path="callForDSTS_V4_0.sb" baud="19200" data="8" parity="0" stop="1" flags="1" />
+  </scripts>
+  <timekeepers>
+    <timekeeper name="external" interval="0" enabled="1" address="0.0.0.0" priority="0" />
+    <timekeeper name="internal" interval="0" enabled="0" address="0.0.0.0" priority="0" />
+    <timekeeper name="network" interval="0" enabled="0" address="0.0.0.0" priority="0" />
+  </timekeepers>
+  <system_types />
+  <log_files>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="EventLog.txt" new="0" rate="00:00:00" reg="0" tod="1" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile1.txt" new="0" rate="00:01:00" reg="0" tod="1" full="0" size="0" email="" subject="" cyc="8" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile2.txt" new="0" rate="00:00:00" reg="0" tod="5" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="0" end="00:00:00" name="LogFile3.txt" new="0" rate="00:00:00" reg="0" tod="5" full="0" size="102400" email="" subject="" />
+    </fileinfo>
+    <fileinfo>
+      <message />
+      <log dir="1" enab="1" end="00:00:00" name="HttpLog.txt" new="0" rate="00:00:00" reg="0" tod="1" full="1" size="0" email="" subject="" />
+    </fileinfo>
+  </log_files>
+  <device_sync>
+    <device sync_rollover="100000000" />
+  </device_sync>
+  <email_server>
+    <server auth="" domain="" pop3="" pop3domain="" pop3user="" port="25" smtp="" sysrep="0" user="" pwd="" useauth="0" pass="" />
+  </email_server>
+  <email_recipient>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+    <mailto>
+      <recipient addtext="0" autogen="0" name="" subject="" />
+      <message />
+    </mailto>
+  </email_recipient>
+  <sms>
+    <sms_recipient>
+      <recipient name="SMS Recipient 1" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 2" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 3" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 4" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 5" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 6" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 7" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 8" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 9" phone="" />
+      <message />
+    </sms_recipient>
+    <sms_recipient>
+      <recipient name="SMS Recipient 10" phone="" />
+      <message />
+    </sms_recipient>
+  </sms>
+  <server_params>
+    <server apn="IP" apnpass="vzwinternet" cellenab="8" cellfw="0.0.0.0" cellfwmask="255.255.255.0" defaddr="192.168.0.120" defgtwy="192.168.0.98" defmask="255.255.255.0" dhcp="1" sms="0" />
+    <cell_info cell_modelname="SXI-CATM1VZW-001" />
+    <maint csqbak="0" cexch="0" csqret="5" csrvwd="0" linkdel="60000" linkret="2" csflags="0" csrvre="0" ckeep="0" linkmax="120000" />
+    <eth flags="0" />
+    <apn idx="1" type="IPV4V6" name="" />
+    <apn idx="2" type="IPV4V6" name="vzwadmin" />
+    <apn idx="3" type="IPV4V6" name="vzwinternet" />
+    <apn idx="4" type="IPV4V6" name="vzwapp" />
+    <apn idx="5" type="IPV4V6" name="vzw800" />
+    <apn idx="6" type="IPV4V6" name="vzwclass6" />
+    <cx en="1" />
+  </server_params>
+  <http_push>
+    <dns address="0.0.0.0" />
+    <dns address="0.0.0.0" />
+    <push enabled="1" flags="4104" id="TestIDAriel" interval="00:01:00" port="80" debug="1" vendor="0" host="192.168.137.1" page="/push" />
+  </http_push>
+  <fwall />
+  <profinet>
+    <io en="0" flags="0" />
+  </profinet>
+  <iot>
+    <mqtt en="0" flags="0" port="8883" vendor="3" debug="0" host="aws.com" ping="50000" throttle="5000" id="0" />
+  </iot>
+</configuration>

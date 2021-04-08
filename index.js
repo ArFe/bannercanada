@@ -7,6 +7,10 @@ const bodyParser = require("body-parser");
 const exphbs = require('express-handlebars');
 require('body-parser-xml')(bodyParser);
 let xmlparser = require('express-xml-bodyparser');
+let needle = require('needle');
+
+needle.defaults({
+    parse_response: false });
 
 let port = process.env.PORT || 80;
 //app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,6 +20,23 @@ let port = process.env.PORT || 80;
 
 let SSinfo = [];
 let cmd = "";
+
+// safely handles circular references
+JSON.safeStringify = (obj, indent = 2) => {
+    let cache = [];
+    const retVal = JSON.stringify(
+      obj,
+      (key, value) =>
+        typeof value === "object" && value !== null
+          ? cache.includes(value)
+            ? undefined // Duplicate reference found, discard key
+            : cache.push(value) && value // Store value in our collection
+          : value,
+      indent
+    );
+    cache = null;
+    return retVal;
+  };
 
 app.use(express.static("./public/"));
 //app.use(bodyParser.urlencoded({ extended: true }));
@@ -138,6 +159,7 @@ app.get("/push", function(req,res){
       }
     }
   }
+
   let now = new Date();
   let month = now.getMonth() < 9 ? "0"+ (now.getMonth()+1) : (now.getMonth()+1); 
   let day = now.getDate() < 10 ? "0"+ now.getDate() : now.getDate() ; 
@@ -146,35 +168,25 @@ app.get("/push", function(req,res){
   let seconds = now.getSeconds() < 10 ? "0"+ now.getSeconds() : now.getSeconds() ; 
   let currentDate = month  + "-" + day + "-" + now.getFullYear() + "-" + hours + ":" + minutes + ":" + seconds;
   cmd = "&tod=" + currentDate;
+  //cmd = "&configure=/files/WLConfig.xml";
+  cmd = "&dlf=http://dxmsamplebucket.s3.amazonaws.com/poc_mqtt_bkp20200103.sb";
   let response = "<html><head><title>HTTP Push Ack</title></head><body>id=" + req.query.id + cmd + "</body></html>";
   cmd = "";
   res.send(response);
   io.emit('chat message', filter);
+  io.emit('chat message', response);
 
-});
-
-// setup a GET 'route' to listen on /push
-app.get("/test", function(req,res){
-//    let xmlDataStr = '<httplog>\n<id>TestID</id>\n<st>20190829160543</st>\n<log>pkt=20190829160048&flags=0&reg19=0&reg22=3115</log>\n<log>pkt=20190829160148&flags=0&reg19=0&reg22=3175</log>\n<log>pkt=20190829160247&flags=0&reg19=0&reg22=3235</log>\n<log>pkt=20190829160347&flags=0&reg19=0&reg22=3295</log>\n<log>pkt=20190829160447&flags=0&reg19=0&reg22=3355</log>\n</httplog>'
-    let xmlDataStr = '<httplog>\n<id>TestID</id>\n<st>20190829160543</st>\n<log>pkt=20190829160048&flags=0&reg19=0&reg22=3115</log>\n<log>pkt=20190829160148&flags=0&reg19=0&reg22=3175</log>\n<miss>pkt=20190829160247&flags=0&reg19=0&reg22=3235</miss>\n<miss>pkt=20190829160347&flags=0&reg19=0&reg22=3295</miss>\n<miss>pkt=20190829160447&flags=0&reg19=0&reg22=3355</miss>\n</httplog>'
-    let xmlData = xml2Obj(xmlDataStr);
-//    console.log(JSON.stringify(xml2Obj(xmlData)));
-//    let xmlStr = '{ "id" : "TestID", "st" : "20190829160543", "log" : [{"pkt" : "20190829160048" , "flags" : "0" , "reg19" : "0" , "reg22" : "3115"} , {"pkt" : "20190829160148" , "flags" : "0" , "reg19" : "0" , "reg22" : "3175"} , {"pkt" : "20190829160247" , "flags" : "0" , "reg19" : "0" , "reg22" : "3235"} , {"pkt" : "20190829160347" , "flags" : "0" , "reg19" : "0" , "reg22" : "3295"} , {"pkt" : "20190829160447" , "flags" : "0" , "reg19" : "0" , "reg22" : "3355"}]}';
-//    xmlData = JSON.parse(xmlStr);
-    console.log("log[1] = " + xmlData.log[2].reg22);
-    console.log(JSON.stringify(xmlData));
-    res.send("<html><head><title>HTTP Push Ack</title></head><body>id=" + "</body></html>");
 });
 
 // setup a POST 'route' to listen on /banner
-app.post("/push", xmlBody2Obj, function(req,res){
-  console.log("POST body");
-  console.log(JSON.stringify(req.xmlBodyObj));
-  
-  let id = req.xmlBodyObj.id;
-  console.log("POST ID: parsed " + id);
-  io.emit('chat message', "Post id: " + id);
-  res.send("<html><head><title>HTTP Push Ack</title></head><body>id=" + id + "</body></html>");
+app.post("/push", function(req,res){
+    console.log("POST body");
+    console.log(JSON.stringify(req.xmlBodyObj));
+    
+    let id = req.xmlBodyObj.id;
+    console.log("POST ID: parsed " + id);
+    io.emit('chat message', "Post id: " + id);
+    res.send("<html><head><title>HTTP Push Ack</title></head><body>id=" + id + "</body></html>");
 });
 
 http.listen(port, function(){

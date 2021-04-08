@@ -29,10 +29,22 @@ socket.on('chat message', function(msg){
 
     let elem = document.querySelector("#led");
     if (elem != null) {
-        if(obj["reg1"] == 1)
+        if(obj["reg5020"] == 1)
+            elem.classList.add("yellow");
+        else if(obj["reg5020"] == 0)
+            elem.classList.remove("yellow");
+
+        if(obj["reg5021"] == 1)
             elem.classList.add("red");
-        else
+        else if(obj["reg5021"] == 0)
             elem.classList.remove("red");
+    }
+
+    elem = document.querySelector("#avail");
+    if (elem != null) {
+        if(obj["reg801"] != null){
+            elem.textContent = obj["reg801"];
+        }
     }
 
     if(obj != null){

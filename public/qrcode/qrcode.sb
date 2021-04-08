@@ -1,0 +1,66 @@
+CONST nl = "\n\r"
+Print "QRCode Script Start ", TICKS, nl
+
+' Slave IDs
+CONST DX80_ISM			= 1
+CONST LocalRegs     	= 199
+
+CONST MaxErr			= 2
+ErrWaitTime				= 0
+WaitTime				= 0.5
+CONST PTL_Light_reg		= 8701
+CONST PTL_State_reg		= 8702
+CONST PTL_Color_reg		= 8703
+CONST PTL_Display_reg	= 8704
+
+' Error Checking version of MULTISET -  MBREGOUT should be setup before this function
+FUNCTION MULTISETE(RegAdrs, Count, SID, MaxErr, Whoami)
+	WrErr  	= 0
+	ErrCnt 	= 0
+	WrErr   = MULTISET(RegAdrs, Count, SID, HoldingReg) 
+	DO UNTIL (WrErr = 0 ) OR (ErrCnt > MaxErr)
+		PRINT "Write Error,  - ",Whoami, " - ErrCnt: ",ErrCnt,"  ErrMsg: ",WrErr, nl
+		SLEEP(ErrWaitTime)
+		TxRxCntr = GETREG(TxRXErrCount_reg, DXM_LocalReg, HoldingReg)
+		TxRxCntr = TxRxCntr+1
+		WrErr	= SETREG(TxRXErrCount_reg, TxRxCntr, DXM_LocalReg, HoldingReg)
+		WrErr	= MULTISET(RegAdrs, Count, SID, HoldingReg) 
+		ErrCnt	= ErrCnt + 1
+	LOOP
+END FUNCTION
+
+
+WHILE(1)
+
+    TCP_Data = FILEIN(5, 200)  
+
+    if TCP_Data <> undef then
+        SPLITA TCP_Data BY "\n" TO MyArray
+        Print "FILE 5 ", nl, TCP_Data, nl
+        for x=0 to 4
+            if MyArray[x] <> undef then
+                'Print "array[", x, "] = ", MyArray[x], nl
+                SPLITA MyArray[x] BY "," TO pickList[x]        
+                for i=0 to 3
+                    if pickList[x,i] <> undef then
+                        Print "pickList[", x, ",", i , "] = ", pickList[x,i], " - "
+                    end if        
+                next i
+                Print nl
+                if pickList[x,1] <> undef then
+                    ' WaitTime = 10
+                    WrErr	= MBREGOUT(0, 1)
+                    WrErr	= MBREGOUT(1, ASC(TRIM(pickList[x,1]))-48)
+                    WrErr	= MBREGOUT(2, ASC(TRIM(pickList[x,2]))-48)
+                    WrErr	= MBREGOUT(3, ASC(TRIM(pickList[x,3]))-48)
+                    MULTISETE(PTL_Light_reg, 4, ASC(TRIM(pickList[x,0]))-48, MaxErr, pickList[x,0])
+                end if        
+            end if        
+        next x
+    end if
+
+    SLEEP(WaitTime)
+    WaitTime = 0.5
+
+
+WEND

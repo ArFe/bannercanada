@@ -1,0 +1,20 @@
+CONST nl = "\n\r"
+Print "QRCode Script Start ", TICKS, nl
+
+' Slave IDs
+CONST DX80_ISM			= 1
+CONST LocalRegs     	= 199
+
+TCP_Data = "start"
+
+WHILE(1)
+
+    TCP_Data = FILEIN(4, 20)
+    Print "FILE 4 ", TCP_Data, nl
+
+    SLEEP(5)
+
+    ' TCP_Data = FILEIN(5, 50)
+    ' Print "FILE 5 ", TCP_Data, nl
+
+WEND
