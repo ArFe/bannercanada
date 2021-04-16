@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Banner Pick-To-Light MQTT generator</title>
+		<style type="text/css">
+			html {
+				font-family: sans-serif;
+			}
+			td {
+				vertical-align: top;
+				padding-top: 0.2em;
+				padding-bottom: 0.2em;
+			}
+			td:first-child {
+				white-space: pre;
+				padding-right: 0.5em;
+			}
+			input[type=radio], input[type=checkbox] {
+				margin: 0em;
+				padding: 0em;
+			}
+			input[type=radio] + label, input[type=checkbox] + label {
+				margin-right: 0.8em;
+				padding-left: 0.2em;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>Banner Pick-To-Light MQTT generator</h1>
+        <table class="noborder" style="width:100%">
+            <tbody id="tableid">
+                <tr>
+                    <td><strong>Operation Mode:</strong></td>
+                    <td >
+                        <input type="radio" name="opMode" id="opMode-pick" checked="checked"><label for="opMode-pick">Pick Sequence</label><br>
+                        <input type="radio" name="opMode" id="opMode-batch" ><label for="opMode-batch">Batch Sequence</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Run List:</td>
+                    <td ><input type="checkbox" checked="checked" id="run-list-once" name="run-list-once"><label for="run-list-once">Run List Once</label></td>
+                </tr>
+            </tbody> 
+        </table>
+        <form id="ptl" action="/ptl" method="post" >
+            <table class="noborder" >
+				<tbody>
+                    <tr>
+						<td><strong>DXM ID:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><input type="text" placeholder="dxm id" colspan="2" name="dxmid" id="dxmid" value="dxm" style="width:100%;font-family:inherit"></td>
+					</tr>
+                    <tr>
+						<td><strong>Commands:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><textarea readonly placeholder="API commands" colspan="2" name="values" id="text-input" style="width:100%; max-width:30em; height:6em; font-family:inherit"></textarea></td>
+					</tr>
+                    <tr>
+						<td><strong>Command:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><input type="text" readonly placeholder="Command" colspan="2" name="cmd" id="cmd" style="width:100%;font-family:inherit"></td>
+					</tr>
+                    <tr>
+						<td><strong>Response:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><input type="text" readonly placeholder="Response" colspan="2" name="rsp" id="rsp" style="width:100%;font-family:inherit"></td>
+					</tr>
+				</tbody> 
+			</table>
+            <input type="submit" class="btn btn-success pull-right" value="Submit Sequence" />
+		</form>
+        <form id="ptl" action="/ptl" method="post" >
+            <table class="noborder" >
+				<tbody>
+                    <tr>
+						<td><strong>DXM ID:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><input type="text" placeholder="dxm id" colspan="2" name="dxmid" id="dxmid1" value="dxm" style="width:100%;font-family:inherit"></td>
+					</tr>
+                    <tr>
+						<td><strong>Commands:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><input type="text" value="6210,1,0,0,0,0" colspan="2" name="values" id="text-input1" style="width:100%;font-family:inherit"></td>
+					</tr>
+                    <tr>
+						<td><strong>Command:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><input type="text" value="CMD0004" colspan="2" name="cmd" id="cmd1" style="width:100%;font-family:inherit"></td>
+					</tr>
+                    <tr>
+						<td><strong>Response:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></td>
+						<td><input type="text" value="RSP0004" colspan="2" name="rsp" id="rsp1" style="width:100%;font-family:inherit"></td>
+					</tr>
+				</tbody> 
+			</table>
+            <input type="submit" class="btn btn-success pull-right" value="Set to ASCII" />
+		</form>
+		<script type="application/javascript" src="/js/ptl.js"></script>
+		
+		<hr>
+	</body>
+</html>
